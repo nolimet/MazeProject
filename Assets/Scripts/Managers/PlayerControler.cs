@@ -5,6 +5,8 @@ public class PlayerControler : MonoBehaviour
 {
     CharacterController control;
     const float gravity = 20f;
+    const float JumpSpeed = 8.0f;
+    const float Speed = 6.00f;
     void Start()
     {
         control = GetComponent<CharacterController>();
@@ -12,14 +14,25 @@ public class PlayerControler : MonoBehaviour
     void Update()
     {
         Vector3 move = new Vector3();
-        move.x += Input.GetAxis(Axis.Horizontal)/100f;
-        move.z += Input.GetAxis(Axis.Vertical)/100f;
-        move = transform.TransformDirection(move);
-        move.y -= gravity;
-        if (Input.GetButton(Axis.Sprint))
+        if (control.isGrounded)
         {
-            move = move * 10f;
+            move.x += Input.GetAxis(Axis.Horizontal);
+            move.z += Input.GetAxis(Axis.Vertical);
+            move = transform.TransformDirection(move);
+            move *= Speed;
+            if (Input.GetButton(Axis.Sprint))
+            {
+                move = move * 2f;
+            }
+
+            if (Input.GetButton(Axis.Jump))
+            {
+                move.y += JumpSpeed;
+                print("Jump");
+            }
         }
-        control.Move(move);
+
+        move.y -= gravity * Time.deltaTime;
+        control.Move(move*Time.deltaTime);
     }
 }
