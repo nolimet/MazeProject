@@ -5,11 +5,14 @@ public class PlayerControler2d : MonoBehaviour
 {
     CharacterController control;
     const float gravity = 2f;
-    const float JumpSpeed = 80.0f;
-    const float Speed = 32.00f;
+    const float JumpSpeed = 5120.0f;
+    const float Speed = 320.00f;
     [SerializeField]
     private float sprintMod = 1.4f;
+    [SerializeField]
     bool isGrounded;
+    [SerializeField]
+    bool doubleJumped;
 
     void FixedUpdate()
     {
@@ -22,13 +25,18 @@ public class PlayerControler2d : MonoBehaviour
              else
                  isGrounded = false;
          }
+    }
+       
+    void Update()
+    {
         Vector3 move = new Vector2();
+
         if (isGrounded)
         {
+            doubleJumped = false;
+
             move.x += Input.GetAxis(Axis.Horizontal);
-           
-            //move.z += Input.GetAxis(Axis.Vertical);
-           // move = transform.TransformDirection(move);
+
             move *= Speed;
             if (Input.GetButton(Axis.Sprint))
             {
@@ -36,9 +44,14 @@ public class PlayerControler2d : MonoBehaviour
             }
 
             if (Input.GetButton(Axis.Jump))
+                move.y += JumpSpeed;
+        }
+        else
+        {
+            if (!doubleJumped && Input.GetButtonDown(Axis.Jump))
             {
                 move.y += JumpSpeed;
-                print("Jump");
+                doubleJumped = true;
             }
         }
 
@@ -50,6 +63,6 @@ public class PlayerControler2d : MonoBehaviour
         else
                 rigidbody2D.drag = 0;
         //move.y -= gravity ;
-        rigidbody2D.AddForce(move);
+        rigidbody2D.AddForce(move*Time.deltaTime);
     }
 }
