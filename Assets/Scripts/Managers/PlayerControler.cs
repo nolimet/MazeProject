@@ -4,8 +4,8 @@ using System.Collections;
 public class PlayerControler : MonoBehaviour
 {
     CharacterController control;
-    const float gravity = 20f;
-    const float JumpSpeed = 8.0f;
+    const float gravity = 2f;
+    const float JumpSpeed = 80.0f;
     const float Speed = 6.00f;
     void Start()
     {
@@ -32,7 +32,7 @@ public class PlayerControler : MonoBehaviour
             }
         }
 
-        move.y -= gravity * Time.deltaTime;
+        move.y -= gravity ;
         control.Move(move*Time.deltaTime);
     }
 }
