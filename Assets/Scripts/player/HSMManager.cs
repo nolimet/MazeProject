@@ -11,6 +11,10 @@ public class HSMManager : MonoBehaviour {
 
     [SerializeField]
     Texture staminaTexture;
+    [SerializeField]
+    Texture healthTexture;
+    [SerializeField]
+    Texture manaTexture;
 
     void Update()
     {
@@ -39,8 +43,12 @@ public class HSMManager : MonoBehaviour {
 
     void OnGUI()
     {
-        GUI.DrawTexture(new Rect(0, 0, (gameData.HSM.Stamina / gameData.HSM.maxStamina * 100), 40), staminaTexture);
-        GUI.TextArea(new Rect(0,0,120,40),"stamina: " + gameData.HSM.Stamina + "/" + gameData.HSM.maxStamina);
+        GUI.DrawTexture(new Rect(0, 0, (gameData.HSM.Stamina / gameData.HSM.maxStamina * 120), 20), staminaTexture);
+        GUI.TextArea(new Rect(0,0,120,20),"stamina: " + Mathf.FloorToInt(gameData.HSM.Stamina) + "/" + gameData.HSM.maxStamina);
+        GUI.DrawTexture(new Rect(0, 20, (gameData.HSM.Health / gameData.HSM.maxHealth * 120), 20), healthTexture);
+        GUI.TextArea(new Rect(0, 20, 120, 20), "health: " + Mathf.FloorToInt(gameData.HSM.Health) + "/" + gameData.HSM.maxHealth);
+        GUI.DrawTexture(new Rect(0, 40, (gameData.HSM.Mana / gameData.HSM.maxMana * 120), 20), manaTexture);
+        GUI.TextArea(new Rect(0, 40, 120, 20), "mana: " + Mathf.FloorToInt(gameData.HSM.Mana) + "/" + gameData.HSM.maxMana);
         
     }
 }
