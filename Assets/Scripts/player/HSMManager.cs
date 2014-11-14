@@ -10,7 +10,7 @@ public class HSMManager : MonoBehaviour
     //Mana
 
     const float staminaRegenrationRate = 4;
-    const float manaRegenrationRate = 1;
+    const float manaRegenrationRate = 0.5f;
 
     [SerializeField]
     Texture staminaTexture;
