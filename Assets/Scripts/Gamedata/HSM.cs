@@ -9,7 +9,18 @@ namespace gameData
         //Stamina
         //Mana
 
-        public const int maxStamina = 100, maxHealth = 100;
-        public static float Health = 100, Stamina = 100;
+        public const int maxStamina = 100, maxHealth = 100, maxMana = 100;
+        public static float Health = 100, Stamina = 100 , Mana = 100;
+
+        public static bool CastSpell(int cost)
+        {
+            if (Mana >= cost)
+            {
+                Mana -= cost;
+                return true;
+            }
+            else
+                return false;
+        }
     }
 }
