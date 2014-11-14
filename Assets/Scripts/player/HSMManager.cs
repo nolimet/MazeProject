@@ -10,7 +10,7 @@ public class HSMManager : MonoBehaviour
     //Mana
 
     const float staminaRegenrationRate = 4;
-    const float manaRegenrationRate = 1;
+    const float manaRegenrationRate = 0.5f;
 
     [SerializeField]
     Texture staminaTexture;
@@ -27,12 +27,14 @@ public class HSMManager : MonoBehaviour
 
     void OnGUI()
     {
-        GUI.DrawTexture(new Rect(0, 0, (HSM.Stamina / HSM.maxStamina * 120), 20), staminaTexture);
-        GUI.TextArea(new Rect(0, 0, 120, 20), "stamina: " + Mathf.FloorToInt(HSM.Stamina) + "/" + HSM.maxStamina);
-        GUI.DrawTexture(new Rect(0, 20, (HSM.Health / HSM.maxHealth * 120), 20), healthTexture);
-        GUI.TextArea(new Rect(0, 20, 120, 20), "health: " + Mathf.FloorToInt(HSM.Health) + "/" + HSM.maxHealth);
-        GUI.DrawTexture(new Rect(0, 40, (HSM.Mana / HSM.maxMana * 120), 20), manaTexture);
-        GUI.TextArea(new Rect(0, 40, 120, 20), "mana: " + Mathf.FloorToInt(HSM.Mana) + "/" + HSM.maxMana);
+        GUI.DrawTexture(new Rect(5, 5, (HSM.Stamina / HSM.maxStamina * 120), 20), staminaTexture);
+        GUI.TextArea(new Rect(5, 5, 120, 20), "stamina: " + Mathf.FloorToInt(HSM.Stamina) + "/" + HSM.maxStamina);
+
+        GUI.DrawTexture(new Rect(5, 25, (HSM.Health / HSM.maxHealth * 120), 20), healthTexture);
+        GUI.TextArea(new Rect(5, 25, 120, 20), "health: " + Mathf.FloorToInt(HSM.Health) + "/" + HSM.maxHealth);
+
+        GUI.DrawTexture(new Rect(5, 45, (HSM.Mana / HSM.maxMana * 120), 20), manaTexture);
+        GUI.TextArea(new Rect(5, 45, 120, 20), "mana: " + Mathf.FloorToInt(HSM.Mana) + "/" + HSM.maxMana);
 
     }
 
@@ -48,7 +50,7 @@ public class HSMManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.C))
             {
                 if (HSM.CastSpell(20))
-                    print("casted a spell");
+                    HSM.Stamina += 20f;
             }
     }
 
