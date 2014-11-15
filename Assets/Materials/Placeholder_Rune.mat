@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Bottom
-  m_Shader: {fileID: 6, guid: 0000000000000000f000000000000000, type: 0}
+  m_Name: Placeholder_Rune
+  m_Shader: {fileID: 10750, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
   m_SavedProperties:
@@ -17,32 +17,25 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: e5ccccda78276904ca0bc3f37d359fc4, type: 3}
+          m_Texture: {fileID: 2800000, guid: 02e885499436f144da135a09fd2b556f, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _BumpMap
+          name: _Illum
         second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _ParallaxMap
-        second:
-          m_Texture: {fileID: 0}
+          m_Texture: {fileID: 2800000, guid: 45e07a7dfa1ccf94cb17d69209b8388b, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
           name: _Shininess
-        second: .0130075309
+        second: 1
       data:
         first:
-          name: _Parallax
-        second: .0199999996
+          name: _EmissionLM
+        second: .360000014
     m_Colors:
       data:
         first:
@@ -51,8 +44,8 @@ Material:
       data:
         first:
           name: _Emission
-        second: {r: 0, g: 0, b: 0, a: 0}
+        second: {r: 1, g: 1, b: 1, a: 0}
       data:
         first:
           name: _SpecColor
-        second: {r: 0, g: 0, b: 0, a: 1}
+        second: {r: .5, g: .5, b: .5, a: 1}
