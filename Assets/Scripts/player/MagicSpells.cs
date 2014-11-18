@@ -5,7 +5,6 @@ using gameData;
 public class MagicSpells : MonoBehaviour {
 
     public const string spellPath = "spells/";
-    public static Transform Player;
     public enum AoESpells
     {
         fireBall
@@ -30,8 +29,11 @@ public class MagicSpells : MonoBehaviour {
                 }
                 break;
         }
-        sp.transform.position = Player.position;
-        sp.transform.rotation = Camera.main.transform.rotation;
+        if (sp != null)
+        {
+            sp.transform.position = HSM.Player.position + HSM.Player.forward * 1.3f;
+            sp.transform.rotation = Camera.main.transform.rotation;
+        }
     }
 
     public static void CastSelf(SelfSpells spell)
@@ -58,7 +60,7 @@ public class MagicSpells : MonoBehaviour {
         print(spell.ToString());
         if (sp != null)
         {
-            sp.transform.parent = Player;
+            sp.transform.parent = HSM.Player;
             sp.transform.localPosition = new Vector3(0, -1, 0);
             Destroy(sp, 10f);
         }

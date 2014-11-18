@@ -11,6 +11,7 @@ namespace gameData
 
         public const int maxStamina = 100, maxHealth = 100, maxMana = 100;
         public static float Health = 100, Stamina = 100 , Mana = 100;
+        public static Transform Player,Camera;
 
         public static bool CastSpell(int cost)
         {

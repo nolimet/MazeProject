@@ -5,7 +5,7 @@ public class AoE_Projectile : MonoBehaviour {
     //example AoE
     void Update()
     {
-        transform.Translate(transform.forward*Time.deltaTime);
+        transform.Translate(Vector3.forward * Time.deltaTime * 7f);
     }
 
     void OnCollisionEnter(Collision col)

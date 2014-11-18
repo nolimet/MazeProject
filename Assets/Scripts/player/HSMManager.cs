@@ -10,7 +10,7 @@ public class HSMManager : MonoBehaviour
     //Mana
 
     const float staminaRegenrationRate = 4;
-    const float manaRegenrationRate = 0.5f;
+    const float manaRegenrationRate = 10f;
 
     [SerializeField]
     Texture staminaTexture;
@@ -21,7 +21,7 @@ public class HSMManager : MonoBehaviour
 
     void Start()
     {
-        MagicSpells.Player = transform;
+        HSM.Player = transform;
     }
 
     void Update()
@@ -54,9 +54,10 @@ public class HSMManager : MonoBehaviour
         }
         //Spell Part
             if (Input.GetKeyDown(KeyCode.C))
-            {
                 MagicSpells.CastSelf(MagicSpells.SelfSpells.staminaBoost);
-            }
+
+            if (Input.GetKeyDown(KeyCode.V))
+                MagicSpells.CastAoE(MagicSpells.AoESpells.fireBall);
     }
 
     void stamina()
