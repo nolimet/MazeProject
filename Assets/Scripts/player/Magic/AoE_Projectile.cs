@@ -3,36 +3,39 @@ using System.Collections;
 
 public class AoE_Projectile : MonoBehaviour {
     //example AoE
-    void Update()
+    void FixedUpdate()
     {
-        transform.Translate(Vector3.forward * Time.deltaTime * 7f);
+        transform.Translate(Vector3.forward * Time.fixedDeltaTime * 20f);
     }
 
     void OnCollisionEnter(Collision col)
     {
-        Ray bag;
+        Explode();
+    }
+
+    void Explode()
+    {
+        Ray ray;
         RaycastHit rayHit;
-        Collider[] hits = Physics.OverlapSphere(transform.position-transform.forward,10);
+        Collider[] hits = Physics.OverlapSphere(transform.position - transform.forward, 10);
         foreach (Collider hit in hits)
         {
-            
-            
+
+
             if (hit.collider.tag == gameData.tags.mob || hit.collider.tag == gameData.tags.player)
             {
-                print("bang");
-                bag = new Ray(transform.position, hit.transform.position-transform.position);
-                
-                if (Physics.Raycast(bag,out rayHit,20f))
-                    Debug.DrawRay(transform.position, bag.direction, Color.blue, 2f);
-                    if(rayHit.collider.tag == hit.collider.tag)
+                ray = new Ray(transform.position, hit.transform.position - transform.position);
+
+                if (Physics.Raycast(ray, out rayHit, 20f))
+                    if (rayHit.collider.tag == hit.collider.tag)
                         hit.SendMessage("TakeDMG", 20, SendMessageOptions.DontRequireReceiver);
             }
         }
         particleSystem.emissionRate = 0;
-        particleSystem.startLifetime = 5;
+        particleSystem.startSpeed = 3;
         particleSystem.Emit(400);
-        
-        Destroy(gameObject, 6f);
+
+        Destroy(gameObject, 2f);
         Destroy(this);
     }
 }
