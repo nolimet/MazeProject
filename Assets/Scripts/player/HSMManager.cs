@@ -82,4 +82,9 @@ public class HSMManager : MonoBehaviour
                     HSM.Stamina -= 5f * Time.deltaTime;
             }
     }
+
+    void TakeDMG(float dmg)
+    {
+        HSM.Health -= dmg;
+    }
 }

@@ -19,20 +19,24 @@ public class MagicSpells : MonoBehaviour {
 
     public static void CastAoE(AoESpells spell)
     {
+        string type = "target/";
+        GameObject sp = null;
         switch (spell)
         {
             case AoESpells.fireBall:
                 if (HSM.CastSpell(10))
                 {
-
+                    sp = (GameObject)Instantiate(Resources.Load(spellPath + type + "basicAoE"));
                 }
                 break;
         }
+        sp.transform.position = Player.position;
+        sp.transform.rotation = Camera.main.transform.rotation;
     }
 
     public static void CastSelf(SelfSpells spell)
     {
-        string self = "self/";
+        string type = "self/";
         GameObject sp = null;
         switch (spell)
         {
@@ -40,14 +44,14 @@ public class MagicSpells : MonoBehaviour {
                 if (HSM.CanHeal()&&HSM.CastSpell(20))
                 {
                     HSM.Heal(10);
-                    sp = (GameObject)Instantiate(Resources.Load(spellPath + self + "Heal"));
+                    sp = (GameObject)Instantiate(Resources.Load(spellPath + type + "Heal"));
                 }
                 break;
             case SelfSpells.staminaBoost:
                 if (HSM.CanStamina() && HSM.CastSpell(10))
                 {
                     HSM.restoreStamina(15);
-                    sp = (GameObject)Instantiate(Resources.Load(spellPath + self + "Stamina"));
+                    sp = (GameObject)Instantiate(Resources.Load(spellPath + type + "Stamina"));
                 }
                 break;
         }
