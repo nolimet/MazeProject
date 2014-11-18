@@ -19,6 +19,11 @@ public class HSMManager : MonoBehaviour
     [SerializeField]
     Texture manaTexture;
 
+    void Start()
+    {
+        MagicSpells.Player = transform;
+    }
+
     void Update()
     {
         stamina();
@@ -40,17 +45,17 @@ public class HSMManager : MonoBehaviour
 
     void magic()
     {
+        //regen
         if (HSM.Mana < HSM.maxMana)
         {
             HSM.Mana += manaRegenrationRate * Time.deltaTime;
             if (HSM.Mana > HSM.maxMana)
                 HSM.Mana = HSM.maxMana;
         }
-
+        //Spell Part
             if (Input.GetKeyDown(KeyCode.C))
             {
-                if (HSM.CastSpell(20))
-                    HSM.Stamina += 20f;
+                MagicSpells.CastSelf(MagicSpells.SelfSpells.staminaBoost);
             }
     }
 

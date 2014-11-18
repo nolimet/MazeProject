@@ -22,5 +22,43 @@ namespace gameData
             else
                 return false;
         }
+
+        public static void Heal(int amount)
+        {
+            if (Health < maxHealth)
+            {
+                Health += amount;
+                if (Health > maxHealth)
+                    Health = maxHealth;
+            }
+        }
+
+        public static void restoreStamina(int amount)
+        {
+            if (Stamina < maxStamina)
+            {
+                Stamina += amount;
+                if (Stamina > maxStamina)
+                    Stamina = maxStamina;
+            }
+        }
+
+        public static bool CanHeal()
+        {
+            if (Health < maxHealth)
+                return true;
+            else
+                return false;
+        }
+
+        public static bool CanStamina()
+        {
+            if (Stamina < maxStamina)
+                return true;
+            else
+                return false;
+        }
     }
+
+    
 }
