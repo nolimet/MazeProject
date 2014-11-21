@@ -15,9 +15,10 @@ public class AoE_Projectile : MonoBehaviour {
 
     void Explode()
     {
+        GetComponent<SphereCollider>().enabled = false;
         Ray ray;
         RaycastHit rayHit;
-        Collider[] hits = Physics.OverlapSphere(transform.position - transform.forward, 10);
+        Collider[] hits = Physics.OverlapSphere(transform.position - transform.forward, 5);
         foreach (Collider hit in hits)
         {
 
