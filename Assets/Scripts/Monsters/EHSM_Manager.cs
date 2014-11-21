@@ -21,6 +21,8 @@ namespace monsters{
         void TakeDMG(float dmg)
         {
             health -= dmg;
+            if(health<=0)
+                renderer.material.color += Color.red;
             print(health);
         }
     }

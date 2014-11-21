@@ -5,6 +5,17 @@ public class ChainLightnin : MonoBehaviour
 {
     public int MaxChain = 2;
     public float Radius;
+    public List<Transform> hasHit;
+    void FixedUpdate()
+    {
+        transform.Translate(Vector3.forward * Time.fixedDeltaTime * 20f);
+    }
+
+    void OnCollisionEnter(Collision col)
+    {
+        Lightnin();
+    }
+
     void Lightnin()
     {
         GetComponent<SphereCollider>().enabled = false;
@@ -13,11 +24,12 @@ public class ChainLightnin : MonoBehaviour
         Collider[] hits;
         Transform cTarget = null;
         Transform cObj = transform;
-        List<Transform> hasHit = new List<Transform>();
+        hasHit = new List<Transform>();
         float closest = Radius + 0.1f;
        
         for (int i = 0; i < MaxChain; i++)
         {
+            closest = Radius + 0.1f;
 
             hits = Physics.OverlapSphere(transform.position - transform.forward, Radius);
             if (hits.Length == 0)
@@ -34,12 +46,14 @@ public class ChainLightnin : MonoBehaviour
                 }
             }
             hasHit.Add(cTarget);
+            cTarget = cObj;
+            Debug.Log(hasHit);
             //endforloop
         }
 
         foreach (Transform t in hasHit)
         {
-            t.gameObject.SendMessage("TakeDMG", 20, SendMessageOptions.DontRequireReceiver);
+            t.SendMessage("TakeDMG", 20, SendMessageOptions.DontRequireReceiver);
         }
     }
 }
