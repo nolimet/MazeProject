@@ -6,9 +6,9 @@ public class ChainLightnin : MonoBehaviour
     public int MaxChain = 2;
     public float Radius;
     public List<Transform> hasHit;
-    void FixedUpdate()
+    void Update()
     {
-        transform.Translate(Vector3.forward * Time.fixedDeltaTime * 20f);
+        transform.Translate(Vector3.forward * Time.deltaTime * 20f);
     }
 
     void OnCollisionEnter(Collision col)
@@ -18,6 +18,7 @@ public class ChainLightnin : MonoBehaviour
 
     void Lightnin()
     {
+        enabled = false;
         GetComponent<SphereCollider>().enabled = false;
         Ray ray;
         RaycastHit rayHit;
@@ -26,14 +27,12 @@ public class ChainLightnin : MonoBehaviour
         Transform cObj = transform;
         hasHit = new List<Transform>();
         float closest = Radius + 0.1f;
-       
+
         for (int i = 0; i < MaxChain; i++)
         {
             closest = Radius + 0.1f;
 
             hits = Physics.OverlapSphere(transform.position - transform.forward, Radius);
-            if (hits.Length == 0)
-                return;
 
             foreach (Collider hit in hits)
             {
@@ -41,19 +40,23 @@ public class ChainLightnin : MonoBehaviour
                 {
                     ray = new Ray(transform.position, hit.transform.position - transform.position);
 
-                    if (Physics.Raycast(ray, out rayHit, Radius) && Vector3.Distance(hit.transform.position, cObj.transform.position) < closest && hasHit.Contains(hit.transform) && cObj != cTarget && rayHit.collider.tag == hit.collider.tag )
-                            cTarget = cObj;
+                    if (Physics.Raycast(ray, out rayHit, Radius) && Vector3.Distance(hit.collider.transform.position, cObj.transform.position) < closest && !hasHit.Contains(hit.transform) && hit.collider.transform != transform)
+                        cTarget = hit.collider.transform;
                 }
             }
+            if (cTarget == null)
+                return;
+
             hasHit.Add(cTarget);
-            cTarget = cObj;
-            Debug.Log(hasHit);
-            //endforloop
+            Debug.DrawLine(cTarget.position, cObj.position, Color.cyan, 4f);
+            cObj = cTarget;
+            cTarget = null;
         }
 
         foreach (Transform t in hasHit)
         {
-            t.SendMessage("TakeDMG", 20, SendMessageOptions.DontRequireReceiver);
+            t.gameObject.SendMessage("TakeDMG", 20, SendMessageOptions.DontRequireReceiver);
         }
+
     }
 }
