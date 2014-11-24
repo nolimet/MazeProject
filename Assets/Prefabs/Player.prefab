@@ -181,6 +181,15 @@ MonoBehaviour:
   staminaTexture: {fileID: 2800000, guid: 2e967c2e26c549141b9fdd913140437c, type: 3}
   healthTexture: {fileID: 2800000, guid: 8482f05f2fd796142a9370f64ce876d6, type: 3}
   manaTexture: {fileID: 2800000, guid: 2d135714b33e33846b91937cb90cfa79, type: 3}
+  CrossHair: {fileID: 2800000, guid: 980c16eb801c6c34e9fa8f143b166076, type: 3}
+  resistances:
+    weak: 4
+    mid: 5
+    strong: 7
+  weaknesses:
+    weak: 6
+    mid: 8
+    strong: 1
 --- !u!124 &12400000
 Behaviour:
   m_ObjectHideFlags: 1

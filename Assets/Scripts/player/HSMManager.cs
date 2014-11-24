@@ -31,9 +31,19 @@ public class HSMManager : MonoBehaviour
     [SerializeField]
     Texture manaTexture;
 
+    Rect ScreenCenter;
+    [SerializeField]
+    Texture CrossHair;
+
+    [SerializeField]
+    gameData.Stats.microData resistances;
+    [SerializeField]
+    gameData.Stats.microData weaknesses;
+
     void Start()
     {
         HSM.Player = transform;
+        ScreenCenter = new Rect(Screen.width / 2f - 32, Screen.height / 2f - 32, 64, 64);
     }
 
     void Update()
@@ -56,6 +66,8 @@ public class HSMManager : MonoBehaviour
         selfSpellData = util.DropdownMenu.dropDown(selfSpells, selfSpellPos, selfSpellData);
         targetSpellData = util.DropdownMenu.dropDown(targetSpells, targetSpellPos, targetSpellData);
 
+        //crossHair
+        GUI.DrawTexture(ScreenCenter, CrossHair);
     }
 
     void magic()
@@ -99,8 +111,24 @@ public class HSMManager : MonoBehaviour
             }
     }
 
-    void TakeDMG(float dmg)
+    void TakeDMG(gameData.Stats.dmgData data)
     {
-        HSM.Health -= dmg;
+        foreach (gameData.Stats.DMGTypes d in data.dmgTypes)
+        {
+            if (resistances.weak == d)
+                data.dmg /= 1.25f;
+            else if (resistances.mid == d)
+                data.dmg /= 1.5f;
+            else if (resistances.strong == d)
+                data.dmg /= 2f;
+            else if (weaknesses.weak == d)
+                data.dmg *= 1.25f;
+            else if (weaknesses.mid == d)
+                data.dmg *= 1.5f;
+            else if (weaknesses.strong == d)
+                data.dmg *= 2f;
+        }
+
+        gameData.HSM.Health -= data.dmg;
     }
 }

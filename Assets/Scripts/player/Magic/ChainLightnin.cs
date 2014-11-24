@@ -6,6 +6,8 @@ public class ChainLightnin : MonoBehaviour
     public int MaxChain = 2;
     public float Radius;
     public List<Transform> hasHit;
+    public gameData.Stats.DMGTypes[] damageTypes;
+    public float Damage;
     void Update()
     {
         transform.Translate(Vector3.forward * Time.deltaTime * 20f);
@@ -18,7 +20,6 @@ public class ChainLightnin : MonoBehaviour
 
     void Lightnin()
     {
-        enabled = false;
         GetComponent<SphereCollider>().enabled = false;
         Ray ray;
         RaycastHit rayHit;
@@ -26,7 +27,13 @@ public class ChainLightnin : MonoBehaviour
         Transform cTarget = null;
         Transform cObj = transform;
         hasHit = new List<Transform>();
-        float closest = Radius + 0.1f;
+        float closest;
+
+
+        particleSystem.emissionRate = 0f;
+        Destroy(gameObject, 1f);
+        Destroy(this, 0.1f);
+
 
         for (int i = 0; i < MaxChain; i++)
         {
@@ -55,8 +62,9 @@ public class ChainLightnin : MonoBehaviour
 
         foreach (Transform t in hasHit)
         {
-            t.gameObject.SendMessage("TakeDMG", 20, SendMessageOptions.DontRequireReceiver);
+            t.gameObject.SendMessage("TakeDMG", new gameData.Stats.dmgData(Damage,damageTypes), SendMessageOptions.DontRequireReceiver);
         }
 
+        
     }
 }
