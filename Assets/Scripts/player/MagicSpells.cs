@@ -7,13 +7,14 @@ public class MagicSpells : MonoBehaviour {
     public const string spellPath = "spells/";
     public enum AoESpells
     {
-        fireBall
+        fireBall = 0,
+        Lightnin = 1
     }
 
     public enum SelfSpells
     {
-        heal,
-        staminaBoost
+        heal = 0,
+        staminaBoost = 1
     }
 
     public static void CastAoE(AoESpells spell)
@@ -26,6 +27,12 @@ public class MagicSpells : MonoBehaviour {
                 if (HSM.CastSpell(10))
                 {
                     sp = (GameObject)Instantiate(Resources.Load(spellPath + type + "basicAoE"));
+                }
+                break;
+            case AoESpells.Lightnin:
+                if (HSM.CastSpell(10))
+                {
+                    sp = (GameObject)Instantiate(Resources.Load(spellPath + type + "BasicChain"));
                 }
                 break;
         }

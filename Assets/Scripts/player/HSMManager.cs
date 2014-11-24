@@ -12,6 +12,18 @@ public class HSMManager : MonoBehaviour
     const float staminaRegenrationRate = 4;
     const float manaRegenrationRate = 10f;
 
+    util.DropdownMenu.outputData selfSpellData = new util.DropdownMenu.outputData();
+    util.DropdownMenu.outputData targetSpellData = new util.DropdownMenu.outputData();
+
+    [SerializeField]
+    Rect selfSpellPos = new Rect(125, 50, 125, 300);
+    [SerializeField]
+    Rect targetSpellPos = new Rect(125, 50, 125, 300);
+    [SerializeField]
+    string[] selfSpells;
+    [SerializeField]
+    string[] targetSpells;
+
     [SerializeField]
     Texture staminaTexture;
     [SerializeField]
@@ -41,6 +53,9 @@ public class HSMManager : MonoBehaviour
         GUI.DrawTexture(new Rect(5, 45, (HSM.Mana / HSM.maxMana * 120), 20), manaTexture);
         GUI.TextArea(new Rect(5, 45, 120, 20), "mana: " + Mathf.FloorToInt(HSM.Mana) + "/" + HSM.maxMana);
 
+        selfSpellData = util.DropdownMenu.dropDown(selfSpells, selfSpellPos, selfSpellData);
+        targetSpellData = util.DropdownMenu.dropDown(targetSpells, targetSpellPos, targetSpellData);
+
     }
 
     void magic()
@@ -54,10 +69,10 @@ public class HSMManager : MonoBehaviour
         }
         //Spell Part
             if (Input.GetKeyDown(KeyCode.C))
-                MagicSpells.CastSelf(MagicSpells.SelfSpells.staminaBoost);
+                MagicSpells.CastSelf((MagicSpells.SelfSpells)selfSpellData.indexNumber);
 
             if (Input.GetKeyDown(KeyCode.V))
-                MagicSpells.CastAoE(MagicSpells.AoESpells.fireBall);
+                MagicSpells.CastAoE((MagicSpells.AoESpells)targetSpellData.indexNumber);
     }
 
     void stamina()

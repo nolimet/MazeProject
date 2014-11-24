@@ -3,6 +3,7 @@ using System.Collections;
 
 public class AoE_Projectile : MonoBehaviour {
     //example AoE
+    
     void FixedUpdate()
     {
         transform.Translate(Vector3.forward * Time.fixedDeltaTime * 20f);

@@ -6,6 +6,7 @@ public class Stats : MonoBehaviour {
 
     public enum DMGTypes
     {
+        None,
         Fire,
         Water,
         Ice,
@@ -17,7 +18,8 @@ public class Stats : MonoBehaviour {
     }
 
     public float health = 10, armor = 0 , level = 1, hpScaling = 1.2f;
-    public List<DMGTypes> resistances = new List<DMGTypes>();
+    public microData resistances;
+    public microData weaknesses;
 
     void Start()
     {
@@ -28,10 +30,26 @@ public class Stats : MonoBehaviour {
     {
         foreach(DMGTypes d in dmgType)
         {
-            if (resistances.Contains(d))
+            if (resistances.weak == d)
                 dmg /= 1.25f;
+            else if (resistances.mid == d)
+                dmg /= 1.5f;
+            else if (resistances.strong == d)
+                dmg /= 2f;
+            else if (weaknesses.weak == d)
+                dmg *= 1.25f;
+            else if (weaknesses.mid== d)
+                dmg *= 1.5f;
+            else if (weaknesses.strong == d)
+                dmg *= 2f;
         }
     }
-
+    [System.Serializable]
+    public class microData
+    {
+        public DMGTypes weak = DMGTypes.None;
+        public DMGTypes mid = DMGTypes.None;
+        public DMGTypes strong = DMGTypes.None;
+    }
     
 }

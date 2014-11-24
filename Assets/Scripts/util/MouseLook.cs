@@ -35,15 +35,10 @@ public class MouseLook : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetKeyDown(KeyCode.H))
         {
-            mouseDown = true;
-            Screen.lockCursor = true;
-        }
-        if (Input.GetMouseButtonUp(1))
-        {
-            mouseDown = false;
-            Screen.lockCursor = false;
+            mouseDown = !mouseDown;
+            Screen.lockCursor = mouseDown;
         }
         if (mouseDown)
         {
