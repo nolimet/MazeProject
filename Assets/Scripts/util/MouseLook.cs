@@ -45,6 +45,7 @@ public class MouseLook : MonoBehaviour
             mouseDown = true;
             Screen.lockCursor=true;
         }
+
         if (mouseDown)
         {
             if (axes == RotationAxes.MouseXAndY)
