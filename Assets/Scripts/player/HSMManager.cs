@@ -12,6 +12,18 @@ public class HSMManager : MonoBehaviour
     const float staminaRegenrationRate = 4;
     const float manaRegenrationRate = 10f;
 
+    util.DropdownMenu.outputData selfSpellData = new util.DropdownMenu.outputData();
+    util.DropdownMenu.outputData targetSpellData = new util.DropdownMenu.outputData();
+
+    [SerializeField]
+    Rect selfSpellPos = new Rect(125, 50, 125, 300);
+    [SerializeField]
+    Rect targetSpellPos = new Rect(125, 50, 125, 300);
+    [SerializeField]
+    string[] selfSpells;
+    [SerializeField]
+    string[] targetSpells;
+
     [SerializeField]
     Texture staminaTexture;
     [SerializeField]
@@ -19,9 +31,19 @@ public class HSMManager : MonoBehaviour
     [SerializeField]
     Texture manaTexture;
 
+    Rect ScreenCenter;
+    [SerializeField]
+    Texture CrossHair;
+
+    [SerializeField]
+    gameData.Stats.microData resistances;
+    [SerializeField]
+    gameData.Stats.microData weaknesses;
+
     void Start()
     {
         HSM.Player = transform;
+        ScreenCenter = new Rect(Screen.width / 2f - 32, Screen.height / 2f - 32, 64, 64);
     }
 
     void Update()
@@ -41,6 +63,11 @@ public class HSMManager : MonoBehaviour
         GUI.DrawTexture(new Rect(5, 45, (HSM.Mana / HSM.maxMana * 120), 20), manaTexture);
         GUI.TextArea(new Rect(5, 45, 120, 20), "mana: " + Mathf.FloorToInt(HSM.Mana) + "/" + HSM.maxMana);
 
+        selfSpellData = util.DropdownMenu.dropDown(selfSpells, selfSpellPos, selfSpellData);
+        targetSpellData = util.DropdownMenu.dropDown(targetSpells, targetSpellPos, targetSpellData);
+
+        //crossHair
+        GUI.DrawTexture(ScreenCenter, CrossHair);
     }
 
     void magic()
@@ -54,10 +81,10 @@ public class HSMManager : MonoBehaviour
         }
         //Spell Part
             if (Input.GetKeyDown(KeyCode.C))
-                MagicSpells.CastSelf(MagicSpells.SelfSpells.staminaBoost);
+                MagicSpells.CastSelf((MagicSpells.SelfSpells)selfSpellData.indexNumber);
 
             if (Input.GetKeyDown(KeyCode.V))
-                MagicSpells.CastAoE(MagicSpells.AoESpells.fireBall);
+                MagicSpells.CastAoE((MagicSpells.AoESpells)targetSpellData.indexNumber);
     }
 
     void stamina()
@@ -84,8 +111,24 @@ public class HSMManager : MonoBehaviour
             }
     }
 
-    void TakeDMG(float dmg)
+    void TakeDMG(gameData.Stats.dmgData data)
     {
-        HSM.Health -= dmg;
+        foreach (gameData.Stats.DMGTypes d in data.dmgTypes)
+        {
+            if (resistances.weak == d)
+                data.dmg /= 1.25f;
+            else if (resistances.mid == d)
+                data.dmg /= 1.5f;
+            else if (resistances.strong == d)
+                data.dmg /= 2f;
+            else if (weaknesses.weak == d)
+                data.dmg *= 1.25f;
+            else if (weaknesses.mid == d)
+                data.dmg *= 1.5f;
+            else if (weaknesses.strong == d)
+                data.dmg *= 2f;
+        }
+
+        gameData.HSM.Health -= data.dmg;
     }
 }

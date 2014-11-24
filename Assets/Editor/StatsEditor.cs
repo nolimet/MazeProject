@@ -12,6 +12,10 @@ public class StatsEditor : Editor {
         obj.health = EditorGUILayout.FloatField("Health", obj.health);
         GUILayout.Label("HP on lvl 10 : " + (Mathf.Round(obj.health * Mathf.Pow(obj.hpScaling,9))));
 
+        EditorGUILayout.Space();
+
+        DrawMicroData(obj.weaknesses, "weakness");
+        DrawMicroData(obj.resistances, "resistances");
 
             
     }
@@ -22,5 +26,13 @@ public class StatsEditor : Editor {
         value = EditorGUI.Slider(rect, label, value, min, max);
         EditorGUILayout.Space();
         return value;
+    }
+
+    void DrawMicroData(Stats.microData mirco, string label)
+    {
+        mirco.weak = (Stats.DMGTypes)EditorGUILayout.EnumPopup("weak " + label, mirco.weak);
+        mirco.mid = (Stats.DMGTypes)EditorGUILayout.EnumPopup("mid " + label, mirco.mid);
+        mirco.strong = (Stats.DMGTypes)EditorGUILayout.EnumPopup("strong " + label, mirco.strong);
+       EditorGUILayout.Space();
     }
 }

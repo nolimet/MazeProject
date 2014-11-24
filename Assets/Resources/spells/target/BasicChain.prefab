@@ -27,7 +27,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 30.4354916, y: 2.26438808, z: -21.4214363}
+  m_LocalPosition: {x: 30.4354916, y: 2.26438808, z: -30.076683}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -61,6 +61,8 @@ MonoBehaviour:
   MaxChain: 5
   Radius: 10
   hasHit: []
+  damageTypes: 05000000
+  Damage: 10
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -247,7 +249,7 @@ ParticleSystem:
         rgba: 4294967295
       maxColor:
         serializedVersion: 2
-        rgba: 4281896959
+        rgba: 4294954552
       minMaxState: 0
     startSize:
       scalar: 1
