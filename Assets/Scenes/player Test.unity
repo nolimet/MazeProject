@@ -13,11 +13,11 @@ SceneSettings:
 --- !u!104 &2
 RenderSettings:
   m_Fog: 0
-  m_FogColor: {r: .5, g: .5, b: .5, a: 1}
+  m_FogColor: {r: 0, g: 0, b: 0, a: 1}
   m_FogMode: 3
   m_FogDensity: .00999999978
   m_LinearFogStart: 0
-  m_LinearFogEnd: 300
+  m_LinearFogEnd: 29
   m_AmbientLight: {r: 0, g: 0, b: 0, a: 1}
   m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: .5
@@ -10431,7 +10431,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: .192156866, g: .301960796, b: .474509805, a: .0196078438}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: .0196078438}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -10439,7 +10439,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: .300000012
-  far clip plane: 100
+  far clip plane: 30
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -13322,6 +13322,22 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 5999778d20e21534c91397bcb8e9d6c5, type: 2}
       propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000000, guid: 5999778d20e21534c91397bcb8e9d6c5, type: 2}
+      propertyPath: far clip plane
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000000, guid: 5999778d20e21534c91397bcb8e9d6c5, type: 2}
+      propertyPath: m_BackGroundColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000000, guid: 5999778d20e21534c91397bcb8e9d6c5, type: 2}
+      propertyPath: m_BackGroundColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000000, guid: 5999778d20e21534c91397bcb8e9d6c5, type: 2}
+      propertyPath: m_BackGroundColor.b
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
