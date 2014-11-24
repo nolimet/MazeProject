@@ -14,6 +14,12 @@ public class PlayerControler : MonoBehaviour
     }
     void Update()
     {
+        playerMove();
+        playerActions();
+    }
+
+    void playerMove()
+    {
         Vector3 move = new Vector3();
         if (control.isGrounded)
         {
@@ -21,7 +27,7 @@ public class PlayerControler : MonoBehaviour
             move.z += Input.GetAxis(Axis.Vertical);
             move = transform.TransformDirection(move);
             move *= Speed;
-            if (Input.GetButton(Axis.Sprint)&& gameData.HSM.Stamina>1)
+            if (Input.GetButton(Axis.Sprint) && gameData.HSM.Stamina > 1)
             {
                 move = move * 2f;
             }
@@ -33,7 +39,17 @@ public class PlayerControler : MonoBehaviour
             }*/
         }
 
-        move.y -= gravity ;
-        control.Move(move*Time.deltaTime);
+        move.y -= gravity;
+        control.Move(move * Time.deltaTime);
+    }
+
+    void playerActions()
+    {
+        if(Input.GetButton(Axis.Interact))
+        {
+            RaycastHit hit;
+            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 3f))
+                hit.collider.transform.SendMessage("UseObj",SendMessageOptions.DontRequireReceiver);
+            }
     }
 }

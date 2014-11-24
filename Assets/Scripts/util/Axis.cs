@@ -6,4 +6,5 @@ public class Axis{
     public const string Vertical = "Vertical";
     public const string Sprint = "Sprint";
     public const string Jump = "Jump";
+    public const string Interact = "Interact";
 }
