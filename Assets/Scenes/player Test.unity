@@ -1874,13 +1874,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data:
     Target: {fileID: 1548474052}
-    distLeft: 3
-    distUp: 0
     MoveTime: 2
     totalSteps: 40
     state: 0
     moving: 0
-    origen: {x: 0, y: 0, z: 0}
+    moveDist: {x: 0, y: 0, z: 0}
 --- !u!1 &104314884
 GameObject:
   m_ObjectHideFlags: 0

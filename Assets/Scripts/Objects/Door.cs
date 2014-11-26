@@ -26,15 +26,33 @@ namespace Mechanismes
                         Callmove(1);
                         yield return new WaitForSeconds(data.MoveTime / data.totalSteps);
                     }
+
+
+                    i = 0;
+                    while (i < data.totalSteps / 20)
+                    {
+                        i++;
+                        CallmoveZ(1);
+                        yield return new WaitForSeconds(data.MoveTime / data.totalSteps);
+                    }
                 }
                 else
                 {
+                    while (i < data.totalSteps / 20)
+                    {
+                        i++;
+                        CallmoveZ(-1);
+                        yield return new WaitForSeconds(data.MoveTime / data.totalSteps);
+                    }
+
+                    i = 0;
                     while (i < data.totalSteps)
                     {
                         i++;
                         Callmove(-1);
                         yield return new WaitForSeconds(data.MoveTime / data.totalSteps);
                     }
+                    
                 }
                 data.state = !data.state;
                 data.moving = false;
@@ -45,9 +63,13 @@ namespace Mechanismes
         }
 
         void Callmove(int dir = 0){
-            data.Target.Translate(data.moveDist / data.totalSteps *dir);
+            data.Target.Translate((Vector2)data.moveDist / data.totalSteps *dir);
             }
 
+        void CallmoveZ(int dir = 0)
+        {
+            data.Target.Translate(new Vector3(0f, 0f, data.moveDist.z) / (data.totalSteps / 5f) * dir);
+        }
         [System.Serializable]
         class MoveData
         {
