@@ -26,7 +26,7 @@ namespace Mechanismes
                         Callmove(1);
                         yield return new WaitForSeconds(data.MoveTime / data.totalSteps);
                     }
-
+                    yield return new WaitForSeconds(0.1f);
 
                     i = 0;
                     while (i < data.totalSteps / 20)
@@ -44,7 +44,7 @@ namespace Mechanismes
                         CallmoveZ(-1);
                         yield return new WaitForSeconds(data.MoveTime / data.totalSteps);
                     }
-
+                    yield return new WaitForSeconds(0.1f);
                     i = 0;
                     while (i < data.totalSteps)
                     {
@@ -73,11 +73,11 @@ namespace Mechanismes
         [System.Serializable]
         class MoveData
         {
-            public Transform Target;
-            public float MoveTime;
-            public int totalSteps;
-            public bool state, moving;
-            public Vector3 moveDist;
+            public Transform Target = null;
+            public float MoveTime = 0;
+            public int totalSteps = 0;
+            public bool state = false, moving = false;
+            public Vector3 moveDist = Vector3.zero;
         }
     }
 }

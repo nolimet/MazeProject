@@ -17,7 +17,7 @@ namespace monsters{
         {
 
         }
-
+        
         void TakeDMG(float dmg)
         {
             health -= dmg;

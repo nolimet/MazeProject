@@ -5,7 +5,8 @@ namespace gameData
 {
     public class tags
     {
-        public const string mob = "monster";
-        public const string player = "Player";
+        public const string MOB = "monster";
+        public const string PLAYER = "Player";
+        public const string Rune = "Rune";
     }
 }

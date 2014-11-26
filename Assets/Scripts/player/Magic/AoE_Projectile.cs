@@ -33,7 +33,7 @@ public class AoE_Projectile : MonoBehaviour
         {
 
 
-            if (hit.collider.tag == gameData.tags.mob || hit.collider.tag == gameData.tags.player)
+            if (hit.collider.tag == gameData.tags.MOB || hit.collider.tag == gameData.tags.PLAYER)
             {
                 ray = new Ray(transform.position, hit.transform.position - transform.position);
 
