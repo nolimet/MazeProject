@@ -14,7 +14,8 @@ public class MagicSpells : MonoBehaviour {
     public enum SelfSpells
     {
         heal = 0,
-        staminaBoost = 1
+        staminaBoost = 1,
+        manaBoost = 2
     }
 
     public static void CastAoE(AoESpells spell)
@@ -62,6 +63,9 @@ public class MagicSpells : MonoBehaviour {
                     HSM.restoreStamina(20);
                     sp = (GameObject)Instantiate(Resources.Load(spellPath + type + "Stamina"));
                 }
+                break;
+            case SelfSpells.manaBoost:
+                HSM.CastSpell(-10);
                 break;
         }
         print(spell.ToString());
