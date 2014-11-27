@@ -61,18 +61,21 @@ namespace gameData
         {
             foreach (DMGTypes d in data.dmgTypes)
             {
-                if (resistances.weak == d)
-                    data.dmg /= 1.25f;
-                else if (resistances.mid == d)
-                    data.dmg /= 1.5f;
-                else if (resistances.strong == d)
-                    data.dmg /= 2f;
-                else if (weaknesses.weak == d)
-                    data.dmg *= 1.25f;
-                else if (weaknesses.mid == d)
-                    data.dmg *= 1.5f;
-                else if (weaknesses.strong == d)
-                    data.dmg *= 2f;
+                if (d != DMGTypes.None)
+                {
+                    if (resistances.weak == d)
+                        data.dmg /= 1.25f;
+                    else if (resistances.mid == d)
+                        data.dmg /= 1.5f;
+                    else if (resistances.strong == d)
+                        data.dmg /= 2f;
+                    else if (weaknesses.weak == d)
+                        data.dmg *= 1.25f;
+                    else if (weaknesses.mid == d)
+                        data.dmg *= 1.5f;
+                    else if (weaknesses.strong == d)
+                        data.dmg *= 2f;
+                }
             }
 
             health -= data.dmg;
