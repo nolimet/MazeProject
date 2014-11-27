@@ -13,7 +13,7 @@ namespace gameData
             public DMGTypes mid = DMGTypes.None;
             public DMGTypes strong = DMGTypes.None;
 
-            public microData(DMGTypes _weak, DMGTypes _mid, DMGTypes _strong)
+            public microData(DMGTypes _weak = DMGTypes.None, DMGTypes _mid = DMGTypes.None, DMGTypes _strong = DMGTypes.None)
             {
                 weak = _weak;
                 mid = _mid;
@@ -47,13 +47,14 @@ namespace gameData
             Slash
         }
 
-        public float health = 10, armor = 0, level = 1, hpScaling = 1.2f;
-        public microData resistances;
-        public microData weaknesses;
+        public float health = 10,maxHealth = 10f , armor = 0, level = 1, hpScaling = 1.2f;
+        public microData resistances = new microData();
+        public microData weaknesses = new microData();
 
         void Start()
         {
-            health *= Mathf.Pow(hpScaling, level - 1);
+            maxHealth *= Mathf.Pow(hpScaling, level - 1);
+            health = maxHealth;
         }
 
         void TakeDMG(dmgData data)

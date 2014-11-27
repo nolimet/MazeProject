@@ -45,7 +45,7 @@ public class AoE_Projectile : MonoBehaviour
         particleSystem.emissionRate = 0;
         particleSystem.startSpeed = 3;
         particleSystem.Emit(400);
-
+        particleSystem.gravityModifier = 1f;
         Destroy(gameObject, 2f);
         Destroy(this);
     }

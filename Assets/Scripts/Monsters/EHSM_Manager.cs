@@ -9,7 +9,7 @@ namespace monsters{
         // Use this for initialization
         void Start()
         {
-
+            Debug.LogError("Decapriated");
         }
 
         // Update is called once per frame

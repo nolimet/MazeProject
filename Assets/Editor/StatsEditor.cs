@@ -9,8 +9,8 @@ public class StatsEditor : Editor {
     {
         Stats obj = (Stats)target;
         obj.hpScaling = makeSlider(obj.hpScaling,"HP Scaling: " ,1f, 2f);
-        obj.health = EditorGUILayout.FloatField("Health", obj.health);
-        GUILayout.Label("HP on lvl 10 : " + (Mathf.Round(obj.health * Mathf.Pow(obj.hpScaling,9))));
+        obj.maxHealth = EditorGUILayout.FloatField("Health", obj.maxHealth);
+        GUILayout.Label("HP on lvl 10 : " + (Mathf.Round(obj.maxHealth * Mathf.Pow(obj.hpScaling,9))));
 
         EditorGUILayout.Space();
 
