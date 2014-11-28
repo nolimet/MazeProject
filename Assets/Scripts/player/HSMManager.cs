@@ -12,6 +12,9 @@ public class HSMManager : MonoBehaviour
     const float staminaRegenrationRate = 4;
     const float manaRegenrationRate = 10f;
 
+
+    public static HSMManager MANAGER = null;
+
     util.DropdownMenu.outputData selfSpellData = new util.DropdownMenu.outputData();
     util.DropdownMenu.outputData targetSpellData = new util.DropdownMenu.outputData();
 
@@ -44,6 +47,7 @@ public class HSMManager : MonoBehaviour
     {
         HSM.Player = transform;
         ScreenCenter = new Rect(Screen.width / 2f - 32, Screen.height / 2f - 32, 64, 64);
+        HSMManager.MANAGER = this;
     }
 
     void Update()
