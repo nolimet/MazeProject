@@ -57,7 +57,7 @@ public class HSMManager : MonoBehaviour
     }
 
     void OnGUI()
-    {
+    {/*
         GUI.DrawTexture(new Rect(5, 5, (HSM.Stamina / HSM.maxStamina * 120), 20), staminaTexture);
         GUI.TextArea(new Rect(5, 5, 120, 20), "stamina: " + Mathf.FloorToInt(HSM.Stamina) + "/" + HSM.maxStamina);
 
@@ -65,13 +65,13 @@ public class HSMManager : MonoBehaviour
         GUI.TextArea(new Rect(5, 25, 120, 20), "health: " + Mathf.FloorToInt(HSM.Health) + "/" + HSM.maxHealth);
 
         GUI.DrawTexture(new Rect(5, 45, (HSM.Mana / HSM.maxMana * 120), 20), manaTexture);
-        GUI.TextArea(new Rect(5, 45, 120, 20), "mana: " + Mathf.FloorToInt(HSM.Mana) + "/" + HSM.maxMana);
+        GUI.TextArea(new Rect(5, 45, 120, 20), "mana: " + Mathf.FloorToInt(HSM.Mana) + "/" + HSM.maxMana);*/
 
         selfSpellData = util.DropdownMenu.dropDown(selfSpells, selfSpellPos, selfSpellData);
         targetSpellData = util.DropdownMenu.dropDown(targetSpells, targetSpellPos, targetSpellData);
 
         //crossHair
-        GUI.DrawTexture(ScreenCenter, CrossHair);
+        //GUI.DrawTexture(ScreenCenter, CrossHair);
     }
 
     void magic()

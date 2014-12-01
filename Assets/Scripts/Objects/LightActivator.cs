@@ -7,6 +7,15 @@ namespace Mechanismes
         bool activated;
         [SerializeField]
         LightData data = new LightData();
+
+        void Start()
+        {
+            foreach (Light l in data.lights)
+            {
+                l.intensity = 0;
+                l.gameObject.particleSystem.emissionRate = 0;
+            }
+        }
         protected override void UseObj()
         {
             if (!activated)
@@ -21,8 +30,9 @@ namespace Mechanismes
             foreach (Light l in data.lights)
             {
                 i++;
-                    StartCoroutine(lightSingle(l));
-                if(i%data.lightAtSameTime==0)
+                l.gameObject.particleSystem.emissionRate = data.particleEmisionRate;
+                StartCoroutine(lightSingle(l));
+                if (i % data.lightAtSameTime == 0)
                     yield return new WaitForSeconds(data.delayBetweenlights);
             }
             yield break;
@@ -42,7 +52,7 @@ namespace Mechanismes
         public class LightData
         {
             public float luminocity = 0, initalDelay, delayBetweenlights, timePerlight;
-            public int stepsPerLight = 0, lightAtSameTime = 1;
+            public int stepsPerLight = 0, lightAtSameTime = 1, particleEmisionRate = 10;
             public Light[] lights;
         }
     }
