@@ -6,6 +6,7 @@ namespace gameData
 {
     public class Stats : MonoBehaviour
     {
+        #region Data Class
         [System.Serializable]
         public class microData
         {
@@ -46,8 +47,9 @@ namespace gameData
             Impact,
             Slash
         }
+        #endregion
 
-        public float health = 10,maxHealth = 10f , armor = 0, level = 1, hpScaling = 1.2f;
+        public float health, maxHealth, armor, level, hpScaling;
         public microData resistances = new microData();
         public microData weaknesses = new microData();
 

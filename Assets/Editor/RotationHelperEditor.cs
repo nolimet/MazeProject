@@ -35,8 +35,6 @@ public class RotationHelperEditor: Editor {
         if (GUILayout.Button("Z -90 Degrees"))
             obj.rotate(new Vector3(0, 0, -90));
         GUILayout.EndHorizontal();
-            
-
     }
 
     void ProgressBar(float value, string label)

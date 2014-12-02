@@ -25,7 +25,7 @@ namespace debug
             {
                 return;
             }
-#endif
+
             Vector3 pos = transform.position;
             int gridSteps = Mathf.RoundToInt(pos.x / xStep);
             pos.x = ((float)gridSteps) * xStep;
@@ -37,6 +37,7 @@ namespace debug
             pos.z = ((float)gridSteps) * zStep;
 
             transform.position = pos;
+#endif
         }
     }
 }

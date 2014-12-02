@@ -134,5 +134,7 @@ public class HSMManager : MonoBehaviour
         }
 
         gameData.HSM.Health -= data.dmg;
+        if (gameData.HSM.Health <= 0)
+            print("player is dead");
     }
 }
