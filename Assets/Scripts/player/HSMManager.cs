@@ -26,18 +26,6 @@ public class HSMManager : MonoBehaviour
     string[] selfSpells;
     [SerializeField]
     string[] targetSpells;
-
-    [SerializeField]
-    Texture staminaTexture;
-    [SerializeField]
-    Texture healthTexture;
-    [SerializeField]
-    Texture manaTexture;
-
-    Rect ScreenCenter;
-    [SerializeField]
-    Texture CrossHair;
-
     [SerializeField]
     gameData.Stats.microData resistances;
     [SerializeField]
@@ -46,7 +34,6 @@ public class HSMManager : MonoBehaviour
     void Start()
     {
         HSM.Player = transform;
-        ScreenCenter = new Rect(Screen.width / 2f - 32, Screen.height / 2f - 32, 64, 64);
         HSMManager.MANAGER = this;
     }
 
@@ -93,7 +80,7 @@ public class HSMManager : MonoBehaviour
 
     void stamina()
     {
-        if (!Input.GetButton(Axis.Sprint) && HSM.Stamina < HSM.maxStamina)
+        if (HSM.Stamina < HSM.maxStamina)
         {
 
             if (Input.GetAxis(Axis.Horizontal) == 0 && Input.GetAxis(Axis.Vertical) == 0)
@@ -107,11 +94,11 @@ public class HSMManager : MonoBehaviour
             if (HSM.Stamina > HSM.maxStamina)
                 HSM.Stamina = HSM.maxStamina;
         }
-        else if (Input.GetButton(Axis.Sprint))
+        if (Input.GetButton(Axis.Sprint))
             if (HSM.Stamina > 1 && Input.GetButton(Axis.Sprint))
             {
                 if (Input.GetAxis(Axis.Horizontal) != 0 || Input.GetAxis(Axis.Vertical) != 0)
-                    HSM.Stamina -= 5f * Time.deltaTime;
+                    HSM.Stamina -= (5f+(staminaRegenrationRate/2f)) * Time.deltaTime;
             }
     }
 

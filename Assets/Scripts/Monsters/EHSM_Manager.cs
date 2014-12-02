@@ -4,8 +4,8 @@ namespace monsters{
     public class EHSM_Manager : MonoBehaviour
     {
         [SerializeField]
-        int maxHealth = 100;
-        float health = 100f;
+        //int maxHealth = 100;
+        //float health = 100f;
         // Use this for initialization
         void Start()
         {
@@ -18,12 +18,12 @@ namespace monsters{
 
         }
         
-        void TakeDMG(float dmg)
+       /* void TakeDMG(float dmg)
         {
             health -= dmg;
             if(health<=0)
                 renderer.material.color += Color.red;
             print(health);
-        }
+        }*/
     }
 }
