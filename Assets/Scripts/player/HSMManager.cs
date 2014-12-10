@@ -13,7 +13,7 @@ public class HSMManager : MonoBehaviour
     const float manaRegenrationRate = 10f;
 
 
-    public static HSMManager MANAGER = null;
+    public static HSMManager instance = null;
 
     util.DropdownMenu.outputData selfSpellData = new util.DropdownMenu.outputData();
     util.DropdownMenu.outputData targetSpellData = new util.DropdownMenu.outputData();
@@ -34,7 +34,7 @@ public class HSMManager : MonoBehaviour
     void Start()
     {
         HSM.Player = transform;
-        HSMManager.MANAGER = this;
+        HSMManager.instance = this;
     }
 
     void Update()
