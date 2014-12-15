@@ -68,7 +68,6 @@ public class MagicSpells : MonoBehaviour {
                 HSM.CastSpell(-10);
                 break;
         }
-        print(spell.ToString());
         if (sp != null)
         {
             sp.transform.parent = HSM.Player;

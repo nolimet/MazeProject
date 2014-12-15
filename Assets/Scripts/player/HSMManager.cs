@@ -123,18 +123,18 @@ public class HSMManager : MonoBehaviour
 
         gameData.HSM.Health -= data.dmg;
         if (gameData.HSM.Health <= 0)
-            print("player is dead");
+            print("your are dead");
     }
 
     public void changeSpell(int type, int id)
     {
         switch (type)
         {
-            case 0:
+            case 1:
                 selfSpell = id;
                 break;
 
-            case 1:
+            case 2:
                 targetSpell = id;
                 break;
         }

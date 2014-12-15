@@ -70,7 +70,7 @@ public class RedialSpellMenu : MonoBehaviour {
             {
                 g = (GameObject)Instantiate(TemplateObject);
                 g.SetActive(true);
-                b = new ButtonObj(g, g.GetComponentInChildren<Text>(), g.GetComponent<Button>(), i, Magics[j].Spells[i], j);
+                b = new ButtonObj(g, g.GetComponentInChildren<Text>(), g.GetComponent<Button>(), i, Magics[j].Spells[i], j + 1);
                 b.RectTrans.SetParent(pt);
                 b.RectTrans.localPosition = (Vector3)VectorExtension.angleToVector((angle * i) + angleOffSet).normalized * radius;
             }
