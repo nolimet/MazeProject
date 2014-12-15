@@ -409,13 +409,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TemplateObject: {fileID: 100020}
-  Spells:
+  Magics:
   - name: Self
-    Spells: []
+    Spells:
+    - Heal
+    - Stamina Boost
+    - Mana Boost
   - name: Target
-    Spells: []
+    Spells:
+    - Fireball
+    - ChainLighting
   menus: []
   canvas: {fileID: 22400002}
+  radius: 120
+  angleOffSet: -90
 --- !u!114 &11400022
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -732,10 +739,10 @@ RectTransform:
   - {fileID: 22400020}
   m_Father: {fileID: 22400002}
   m_RootOrder: 4
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: -1500, y: -578}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22400018
 RectTransform:

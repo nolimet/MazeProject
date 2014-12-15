@@ -7,7 +7,7 @@ public class PlayerControler : MonoBehaviour
 
     const float gravity = 20f;
     const float Speed = 4.00f;
-
+    public static bool canMove;
     void Start()
     {
         control = GetComponent<CharacterController>();
@@ -20,27 +20,34 @@ public class PlayerControler : MonoBehaviour
 
     void playerMove()
     {
-        Vector3 move = new Vector3();
-        if (control.isGrounded)
+        if (Input.GetButton(Axis.Cancel))
+            PlayerControler.canMove = false;
+        if (Input.GetMouseButton(1))
+            PlayerControler.canMove = true;
+        if (PlayerControler.canMove)
         {
-            move.x += Input.GetAxis(Axis.Horizontal);
-            move.z += Input.GetAxis(Axis.Vertical);
-            move = transform.TransformDirection(move);
-            move *= Speed;
-            if (Input.GetButton(Axis.Sprint) && gameData.HSM.Stamina > 1)
+            Vector3 move = new Vector3();
+            if (control.isGrounded)
             {
-                move = move * 2f;
+                move.x += Input.GetAxis(Axis.Horizontal);
+                move.z += Input.GetAxis(Axis.Vertical);
+                move = transform.TransformDirection(move);
+                move *= Speed;
+                if (Input.GetButton(Axis.Sprint) && gameData.HSM.Stamina > 1)
+                {
+                    move = move * 2f;
+                }
+
+                /*if (Input.GetButton(Axis.Jump))
+                {
+                    move.y += JumpSpeed;
+                    print("Jump");
+                }*/
             }
 
-            /*if (Input.GetButton(Axis.Jump))
-            {
-                move.y += JumpSpeed;
-                print("Jump");
-            }*/
+            move.y -= gravity;
+            control.Move(move * Time.deltaTime);
         }
-
-        move.y -= gravity;
-        control.Move(move * Time.deltaTime);
     }
 
     void playerActions()

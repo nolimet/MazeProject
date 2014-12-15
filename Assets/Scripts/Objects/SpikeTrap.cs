@@ -18,7 +18,6 @@ namespace Mechanismes
         void Start()
         {
             l = Spikes.Length;
-            print(transform.forward);
         }
         void Update()
         {

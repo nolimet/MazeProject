@@ -7,58 +7,148 @@ public class RedialSpellMenu : MonoBehaviour {
     [SerializeField]
     GameObject TemplateObject;
     [SerializeField]
-    SpellList[] Spells;
+    SpellList[] Magics;
     [SerializeField]
     List<Menu> menus;
     RectTransform rectTrans;
     [SerializeField]
     RectTransform canvas;
+    [SerializeField]
+    float radius, angleOffSet;
 
+    public static RedialSpellMenu instance;
     void Start()
     {
+        instance = this;
         rectTrans = GetComponent<RectTransform>();
+
         GameObject g;
         GameObject p;
+        ButtonObj b;
+        RectTransform pt;
+        Menu pm;
+
 
         int l;
-        foreach (SpellList spell in Spells)
+        int k = Magics.Length;
+        float angle;
+
+
+        l = Magics.Length;
+        angle = 360f / l;
+
+        p = new GameObject("Magics");
+        p.AddComponent<RectTransform>().SetParent(rectTrans);
+        pt = p.GetComponent<RectTransform>();
+        pm = new Menu(pt, p);
+        menus.Add(pm);
+        pt.localPosition = Vector3.zero;
+
+        for (int i = 0; i < l; i++)
         {
-            p = new GameObject(spell.name);
-            ButtonObj b;
-            p.AddComponent<RectTransform>().parent=canvas;
-            l = spell.Spells.Length;
+            g = (GameObject)Instantiate(TemplateObject);
+            g.SetActive(true);
+            b = new ButtonObj(g, g.GetComponentInChildren<Text>(), g.GetComponent<Button>(), i, Magics[i].name, 0);
+            b.RectTrans.SetParent(pt);
+            b.RectTrans.localPosition = (Vector3)VectorExtension.angleToVector((angle * i) + angleOffSet).normalized * radius;
+        }
+
+        for (int j = 0; j < k; j++)
+        {
+            p = new GameObject(Magics[j].name);
+            p.AddComponent<RectTransform>().SetParent(rectTrans);
+            
+            pt = p.GetComponent<RectTransform>();
+            pm = new Menu(pt, p);
+            menus.Add(pm);
+            pt.localPosition = Vector3.zero;
+
+            l = Magics[j].Spells.Length;
+            angle = 360f / l;
+
             for (int i = 0; i < l; i++)
             {
                 g = (GameObject)Instantiate(TemplateObject);
-                b = new ButtonObj(g, g.GetComponentInChildren<Text>(), g.GetComponent<Button>(), i, spell.Spells[i]);
+                g.SetActive(true);
+                b = new ButtonObj(g, g.GetComponentInChildren<Text>(), g.GetComponent<Button>(), i, Magics[j].Spells[i], j);
+                b.RectTrans.SetParent(pt);
+                b.RectTrans.localPosition = (Vector3)VectorExtension.angleToVector((angle * i) + angleOffSet).normalized * radius;
             }
         }
+        l = menus.Count;
+        for (int i = 1; i < l; i++)
+        {
+            menus[i].menuGameObject.SetActive(false);
+        }
+       
+    }
+    void Update()
+    {
+        if(Input.GetButton(Axis.Cancel))
+            OpenMenu(0);
+        if(Input.GetMouseButton(1))
+            OpenMenu(-1);
     }
 
-    void makeNewButton()
+    public void OpenMenu(int id)
     {
+        for (int i = 0; i < menus.Count; i++)
+        {
+            menus[i].menuGameObject.SetActive(false);
+        }
+        if(id>-1)
+            menus[id].menuGameObject.SetActive(true);
+    }
+
+    public void SelectSpell(int type, int id)
+    {
+        HSMManager.instance.changeSpell(type, id);
     }
 
     [System.Serializable]
     class ButtonObj
     {
         public GameObject self;
-        RectTransform RectTrans;
+        public RectTransform RectTrans;
         public Button button;
         public Text visual;
         public int spellNumb;
+        public int spellType;
 
-        public ButtonObj(GameObject _self, Text _visual,Button _button ,int _spellNumb, string SpellName)
+        public ButtonObj(GameObject _self, Text _visual,Button _button ,int _spellNumb, string SpellName,int _spellType)
         {
             self = _self;
             visual = _visual;
             button = _button;
             spellNumb = _spellNumb;
-
+            spellType = _spellType;
             RectTrans = self.GetComponent<RectTransform>();
 
             visual.text = SpellName;
-            
+            self.name = SpellName;
+
+            AddEvents();
+        }
+
+        void AddEvents()
+        {
+            button.onClick.RemoveAllListeners();
+            if (spellType == 0)
+            {
+                
+                //Add your new event
+                button.onClick.AddListener(delegate
+                {
+                    RedialSpellMenu.instance.OpenMenu(spellNumb + 1);
+                });
+            }
+            else
+            {
+                button.onClick.AddListener(delegate
+                {
+                    RedialSpellMenu.instance.SelectSpell(spellType, spellNumb);
+                });
+            }
         }
     }
 
