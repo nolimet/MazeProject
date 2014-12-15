@@ -1,0 +1,27 @@
+const DMG ticks per second(DMGTPS)
+
+enum DMGTypes
+
+Enumerator(DMGDATA, target)
+	float totalDuration = duration
+	if target == player
+		while(duration<0)
+			duration -=1/ DMGTPS
+			foreach dmgtyp in dmgTypes
+				player send takedmg(type, DMGTotal / totalDuration)
+			yield(1 / DMGTPS)
+	
+	if target == other
+		obj = target stats
+		while(duration<0)
+			duration -=1/ DMGTPS
+			foreach dmgtyp in dmgTypes
+				obj send takedmg(type, DMGTotal / totalDuration)
+			yield(1 / DMGTPS)
+			
+Class DMGDATA
+	DMGTYPE
+	TOTALDMG
+	DURATION
+	
+	
