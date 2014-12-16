@@ -45,7 +45,12 @@ namespace gameData
             Lightning,
             Piercing,
             Impact,
-            Slash
+            Slash,
+            Arcane,
+            Bleeding,
+            Binding,
+            Blinding,
+            Slowness
         }
         #endregion
 
