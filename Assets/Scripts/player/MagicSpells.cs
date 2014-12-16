@@ -15,7 +15,8 @@ public class MagicSpells : MonoBehaviour {
     {
         heal = 0,
         staminaBoost = 1,
-        manaBoost = 2
+        manaBoost = 2,
+        regeneration = 3
     }
 
     public static void CastAoE(AoESpells spell)
@@ -51,21 +52,28 @@ public class MagicSpells : MonoBehaviour {
         switch (spell)
         {
             case SelfSpells.heal:
-                if (HSM.CanHeal()&&HSM.CastSpell(60))
+                if (HSM.CanHeal()&&HSM.CastSpell(30))
                 {
-                    HSM.Heal(50);
+                    HSM.Heal(20);
                     sp = (GameObject)Instantiate(Resources.Load(spellPath + type + "Heal"));
                 }
                 break;
             case SelfSpells.staminaBoost:
                 if (HSM.CanStamina() && HSM.CastSpell(30))
                 {
-                    HSM.restoreStamina(20);
+                    StatusEffect.EffectStarter(new StatusEffect.StatusData(StatusEffect.effects.StaminaRegen, HSMManager.instance.gameObject, 30f), 2f);
                     sp = (GameObject)Instantiate(Resources.Load(spellPath + type + "Stamina"));
                 }
                 break;
             case SelfSpells.manaBoost:
                 HSM.CastSpell(-10);
+                break;
+            case SelfSpells.regeneration:
+                if (HSM.CanHeal() && HSM.CastSpell(60))
+                {
+                    StatusEffect.EffectStarter(new StatusEffect.StatusData(StatusEffect.effects.Regeneration, HSMManager.instance.gameObject, 50f), 2f);
+                    sp = (GameObject)Instantiate(Resources.Load(spellPath + type + "Heal"));
+                }
                 break;
         }
         if (sp != null)

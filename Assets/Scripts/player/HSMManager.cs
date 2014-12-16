@@ -23,7 +23,7 @@ public class HSMManager : MonoBehaviour
     [SerializeField]
     gameData.Stats.microData weaknesses;
 
-    void Start()
+    void Awake()
     {
         HSM.Player = transform;
         HSMManager.instance = this;

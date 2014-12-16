@@ -47,7 +47,8 @@ namespace gameData
             Impact,
             Slash,
             Arcane,
-            Bleeding
+            Bleeding,
+            Poison
         }
         #endregion
 

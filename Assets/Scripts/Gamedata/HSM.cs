@@ -24,7 +24,7 @@ namespace gameData
                 return false;
         }
 
-        public static void Heal(int amount)
+        public static void Heal(float amount)
         {
             if (Health < maxHealth)
             {
@@ -34,13 +34,23 @@ namespace gameData
             }
         }
 
-        public static void restoreStamina(int amount)
+        public static void restoreStamina(float amount)
         {
             if (Stamina < maxStamina)
             {
                 Stamina += amount;
                 if (Stamina > maxStamina)
                     Stamina = maxStamina;
+            }
+        }
+
+        public static void restoreMana(float amount)
+        {
+            if (Mana < maxMana)
+            {
+                Mana += amount;
+                if (Mana > maxMana)
+                    Mana = maxMana;
             }
         }
 

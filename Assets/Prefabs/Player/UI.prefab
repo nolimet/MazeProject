@@ -415,6 +415,7 @@ MonoBehaviour:
     - Heal
     - Stamina Boost
     - Mana Boost
+    - Regeneration
   - name: Target
     Spells:
     - Fireball
