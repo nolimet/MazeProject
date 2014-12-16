@@ -115,7 +115,7 @@ public class HSMManager : MonoBehaviour
 
         gameData.HSM.Health -= data.dmg;
         if (gameData.HSM.Health <= 0)
-            print("your are dead");
+            gameData.HSM.Health = 0;
     }
 
     public void changeSpell(int type, int id)

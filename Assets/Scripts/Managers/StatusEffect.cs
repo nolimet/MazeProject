@@ -26,12 +26,10 @@ public class StatusEffect : MonoBehaviour
 
     public static IEnumerator StartEffect(StatusData effect, float duration)
     {
-        print("Started routine");
         float TotalDuration = duration;
         float waitTime = 1f / DMGTPS;
         if (effect.target.tag == tags.PLAYER)
         {
-            print("player");
             while (duration > 0)
             {
                 duration -= waitTime;
@@ -55,28 +53,32 @@ public class StatusEffect : MonoBehaviour
 
     public static void ExcuteEffectPlayer(StatusData data, float duration)
     {
+        float callculatedDMG = data.totalDmg / duration / DMGTPS;
         switch (data.status)
         {
             case effects.Burning:
-                data.target.SendMessage("TakeDMG", new Stats.dmgData(data.totalDmg / duration / DMGTPS, new Stats.DMGTypes[] { Stats.DMGTypes.Fire }), SendMessageOptions.DontRequireReceiver);
+                data.target.SendMessage("TakeDMG", new Stats.dmgData(callculatedDMG, new Stats.DMGTypes[] { Stats.DMGTypes.Fire }), SendMessageOptions.DontRequireReceiver);
                 break;
 
             case effects.Bleeding:
-                data.target.SendMessage("TakeDMG", new Stats.dmgData(data.totalDmg / duration / DMGTPS, new Stats.DMGTypes[] { Stats.DMGTypes.Slash, Stats.DMGTypes.Impact }), SendMessageOptions.DontRequireReceiver);
+                data.target.SendMessage("TakeDMG", new Stats.dmgData(callculatedDMG, new Stats.DMGTypes[] { Stats.DMGTypes.Slash, Stats.DMGTypes.Impact }), SendMessageOptions.DontRequireReceiver);
                 break;
 
             case effects.Poisened:
-                data.target.SendMessage("TakeDMG", new Stats.dmgData(data.totalDmg / duration / DMGTPS, new Stats.DMGTypes[] { Stats.DMGTypes.Poison }), SendMessageOptions.DontRequireReceiver);
+                data.target.SendMessage("TakeDMG", new Stats.dmgData(callculatedDMG, new Stats.DMGTypes[] { Stats.DMGTypes.Poison }), SendMessageOptions.DontRequireReceiver);
                 break;
 
             case effects.Slowness:
-                data.target.SendMessage("TakeDMG", new Stats.dmgData(data.totalDmg / duration / DMGTPS, new Stats.DMGTypes[] { Stats.DMGTypes.Ice }), SendMessageOptions.DontRequireReceiver);
+                data.target.SendMessage("TakeDMG", new Stats.dmgData(callculatedDMG, new Stats.DMGTypes[] { Stats.DMGTypes.Ice }), SendMessageOptions.DontRequireReceiver);
                 break;
             case effects.Regeneration:
-                HSM.Heal(data.totalDmg / duration / DMGTPS);
+                HSM.Heal(callculatedDMG);
                 break;
             case effects.StaminaRegen:
-                HSM.restoreStamina(data.totalDmg / duration / DMGTPS);
+                HSM.restoreStamina(callculatedDMG);
+                break;
+            case effects.ManaRegen:
+                HSM.restoreMana(callculatedDMG);
                 break;
             default:
                 break;

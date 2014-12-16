@@ -44,6 +44,16 @@ namespace gameData
             }
         }
 
+        public static void takeStamina(float amount)
+        {
+            if (Stamina > 0)
+            {
+                Stamina -= amount;
+                if (Stamina < 0)
+                    Stamina = 0;
+            }
+        }
+
         public static void restoreMana(float amount)
         {
             if (Mana < maxMana)
@@ -62,12 +72,22 @@ namespace gameData
                 return false;
         }
 
-        public static bool CanStamina()
+        public static bool CanStamina(bool invert = false, float value=0)
         {
-            if (Stamina < maxStamina)
-                return true;
+            if (!invert)
+            {
+                if (Stamina < maxStamina)
+                    return true;
+                else
+                    return false;
+            }
             else
-                return false;
+            {
+                if (Stamina >= value)
+                    return true;
+                else
+                    return false;
+            }
         }
     }
 

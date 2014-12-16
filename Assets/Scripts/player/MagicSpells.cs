@@ -66,7 +66,11 @@ public class MagicSpells : MonoBehaviour {
                 }
                 break;
             case SelfSpells.manaBoost:
-                HSM.CastSpell(-10);
+                if (HSM.CanStamina(true, 40f))
+                {
+                    StatusEffect.EffectStarter(new StatusEffect.StatusData(StatusEffect.effects.ManaRegen, HSMManager.instance.gameObject, 30f), 2f);
+                    HSM.takeStamina(20f);
+                }
                 break;
             case SelfSpells.regeneration:
                 if (HSM.CanHeal() && HSM.CastSpell(60))

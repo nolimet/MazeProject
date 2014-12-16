@@ -4,9 +4,10 @@ using System.Collections.Generic;
 
 namespace gameData
 {
+    [System.SerializableAttribute]
     public class Stats : MonoBehaviour
     {
-        #region Data Class
+#region Data Class
         [System.Serializable]
         public class microData
         {
@@ -52,13 +53,14 @@ namespace gameData
         }
         #endregion
 
-        public float health, maxHealth, armor, level, hpScaling;
+        public float health = 10, maxHealth, armor = 20, level = 0, hpScaling = 1.2f;
         public microData resistances = new microData();
         public microData weaknesses = new microData();
 
         void Start()
         {
-            maxHealth *= Mathf.Pow(hpScaling, level - 1);
+            maxHealth = Mathf.Round(maxHealth * Mathf.Pow(hpScaling,level));
+            print(Mathf.Pow(hpScaling, level - 1));
             health = maxHealth;
         }
 
@@ -85,8 +87,11 @@ namespace gameData
 
             health -= data.dmg;
             if (health <= 0)
+            {
                 renderer.material.color += Color.red;
-            print(health);
+                health = 0;
+            }
+            
         }
     }
 }
