@@ -4,28 +4,30 @@ using UnityEditor;
 #endif
 using System.Collections;
 
-namespace debug
+namespace util
 {
-#if UNITY_EDITOR
-    [ExecuteInEditMode()]
-#endif
     public class Snapper : MonoBehaviour
     {
         public float xStep = 3f;
         public float yStep = 3f;
         public float zStep = 3f;
 
-        void Update()
-        {
-            if (!gameObject.activeInHierarchy) return;
 
+        void Start()
+        {
             if (Application.isPlaying) Destroy(this);
+        }
+
+        public void _Update()
+        {
+            if (!gameObject.activeInHierarchy || Input.GetMouseButton(0)) return;
+
 #if UNITY_EDITOR
             if ((Selection.activeTransform != null) && (Selection.activeTransform != transform) && (transform.IsChildOf(Selection.activeTransform)))
             {
                 return;
             }
-#endif
+
             Vector3 pos = transform.position;
             int gridSteps = Mathf.RoundToInt(pos.x / xStep);
             pos.x = ((float)gridSteps) * xStep;
@@ -37,6 +39,7 @@ namespace debug
             pos.z = ((float)gridSteps) * zStep;
 
             transform.position = pos;
+#endif
         }
     }
 }

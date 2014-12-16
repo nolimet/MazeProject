@@ -1,0 +1,13 @@
+ball hits enemy
+	
+	for i < maxChain
+	
+		overlaySpherecast cObj
+		
+		foreach hit in overlaySphereCast
+			if Distance(hit,cObj) < closest and hit notIn closest
+				hit = closest;
+			if closest = null
+				end loop
+		havehit add closest
+		cObj = closest

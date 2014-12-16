@@ -3,6 +3,8 @@
 --- !u!78 &1
 TagManager:
   tags:
+  - monster
+  - Rune
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
@@ -14,10 +16,10 @@ TagManager:
   Builtin Layer 7: 
   User Layer 8: Player
   User Layer 9: Monster
-  User Layer 10: 
-  User Layer 11: 
-  User Layer 12: 
-  User Layer 13: 
+  User Layer 10: Maze
+  User Layer 11: IgnoredByLight
+  User Layer 12: Rune
+  User Layer 13: Lights
   User Layer 14: 
   User Layer 15: 
   User Layer 16: 

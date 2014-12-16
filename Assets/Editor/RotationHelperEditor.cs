@@ -14,10 +14,10 @@ public class RotationHelperEditor: Editor {
 
         GUILayout.BeginHorizontal();
         if (GUILayout.Button("X +90 Degrees"))
-            obj.rotate(new Vector3(0, 90, 0));
+            obj.rotate(new Vector3(90, 0, 0));
 
         if (GUILayout.Button("X -90 Degrees"))
-            obj.rotate(new Vector3(0, -90, 0));
+            obj.rotate(new Vector3(-90, 0, 0));
         GUILayout.EndHorizontal() ;
 
         GUILayout.BeginHorizontal();
@@ -30,13 +30,11 @@ public class RotationHelperEditor: Editor {
 
         GUILayout.BeginHorizontal();
         if (GUILayout.Button("Z +90 Degrees"))
-            obj.rotate(new Vector3(0, 90, 0));
+            obj.rotate(new Vector3(0, 0, 90));
 
         if (GUILayout.Button("Z -90 Degrees"))
-            obj.rotate(new Vector3(0, -90, 0));
+            obj.rotate(new Vector3(0, 0, -90));
         GUILayout.EndHorizontal();
-            
-
     }
 
     void ProgressBar(float value, string label)

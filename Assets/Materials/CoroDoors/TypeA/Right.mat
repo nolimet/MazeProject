@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Right
-  m_Shader: {fileID: 6, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 2, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
   m_SavedProperties:
@@ -17,14 +17,21 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: ccca7d0f8ae0ff049a941e175f535cca, type: 3}
+          m_Texture: {fileID: 2800000, guid: 6a886092ca8b40442a76ba8df5ef6017, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _BumpMap
+        second:
+          m_Texture: {fileID: 2800000, guid: 2f0ecffcdcecaad489110a1ab9378924, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
           name: _Shininess
-        second: .0130075309
+        second: .484212965
     m_Colors:
       data:
         first:
@@ -32,9 +39,9 @@ Material:
         second: {r: 1, g: 1, b: 1, a: 1}
       data:
         first:
-          name: _Emission
-        second: {r: 0, g: 0, b: 0, a: 0}
+          name: _SpecColor
+        second: {r: .301470578, g: .301470578, b: .301470578, a: 1}
       data:
         first:
-          name: _SpecColor
-        second: {r: 0, g: 0, b: 0, a: 1}
+          name: _Emission
+        second: {r: 0, g: 0, b: 0, a: 0}

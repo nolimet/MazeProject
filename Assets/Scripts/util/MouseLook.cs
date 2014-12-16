@@ -35,16 +35,17 @@ public class MouseLook : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(1))
-        {
-            mouseDown = true;
-            Screen.lockCursor = true;
-        }
-        if (Input.GetMouseButtonUp(1))
+        if (Input.GetButton(Axis.Cancel))
         {
             mouseDown = false;
             Screen.lockCursor = false;
         }
+        if(Input.GetMouseButtonDown(1))
+        {
+            mouseDown = true;
+            Screen.lockCursor=true;
+        }
+
         if (mouseDown)
         {
             if (axes == RotationAxes.MouseXAndY)
