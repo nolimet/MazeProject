@@ -47,10 +47,7 @@ namespace gameData
             Impact,
             Slash,
             Arcane,
-            Bleeding,
-            Binding,
-            Blinding,
-            Slowness
+            Bleeding
         }
         #endregion
 
