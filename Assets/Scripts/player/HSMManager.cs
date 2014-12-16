@@ -19,14 +19,6 @@ public class HSMManager : MonoBehaviour
    // util.DropdownMenu.outputData targetSpellData = new util.DropdownMenu.outputData();
     int selfSpell, targetSpell;
     [SerializeField]
-    Rect selfSpellPos = new Rect(125, 50, 125, 300);
-    [SerializeField]
-    Rect targetSpellPos = new Rect(125, 50, 125, 300);
-    [SerializeField]
-    string[] selfSpells;
-    [SerializeField]
-    string[] targetSpells;
-    [SerializeField]
     gameData.Stats.microData resistances;
     [SerializeField]
     gameData.Stats.microData weaknesses;

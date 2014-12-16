@@ -2,7 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
-public class RedialSpellMenu : MonoBehaviour {
+public class radialSpellMenu : MonoBehaviour
+{
 
     [SerializeField]
     GameObject TemplateObject;
@@ -14,9 +15,9 @@ public class RedialSpellMenu : MonoBehaviour {
     [SerializeField]
     RectTransform canvas;
     [SerializeField]
-    float radius, angleOffSet;
+    float radius = 200f, angleOffSet = 0f;
 
-    public static RedialSpellMenu instance;
+    public static radialSpellMenu instance;
     void Start()
     {
         instance = this;
@@ -139,14 +140,14 @@ public class RedialSpellMenu : MonoBehaviour {
                 //Add your new event
                 button.onClick.AddListener(delegate
                 {
-                    RedialSpellMenu.instance.OpenMenu(spellNumb + 1);
+                    radialSpellMenu.instance.OpenMenu(spellNumb + 1);
                 });
             }
             else
             {
                 button.onClick.AddListener(delegate
                 {
-                    RedialSpellMenu.instance.SelectSpell(spellType, spellNumb);
+                    radialSpellMenu.instance.SelectSpell(spellType, spellNumb);
                 });
             }
         }
