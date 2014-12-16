@@ -46,15 +46,29 @@ public class MazeGenerator : MonoBehaviour {
 		instance = this;
 	}
 	
-	void Start()
+	/*void Start()
 	{
-		Camera.main.orthographic = true;
-		Camera.main.orthographicSize = 30;
+		//Camera.main.orthographic = true;
+		//Camera.main.orthographicSize = 30;
 		GenerateMaze();
-	}
-	
-	void GenerateMaze()
+	}*/
+
+    public void cleanUp()
+    {
+        Transform[] objects = GetComponentsInChildren<Transform>();
+        foreach (Transform t in objects)
+        {
+            DestroyImmediate(t.gameObject);
+        }
+    }
+    public void BuildMaze()
+    {
+        GenerateMaze();
+    }
+
+	 void GenerateMaze()
 	{
+       // cleanUp();
 		Maze = new int[width, height];
 		for (int x = 0; x < width; x++)
 		{
@@ -86,9 +100,9 @@ public class MazeGenerator : MonoBehaviour {
 				{
 					pathMazes.Add(new Vector3(i, j, 0));
 				}
-				
 			}
 		}
+        
 	}
 	
 	public int[,] CreateMaze()
