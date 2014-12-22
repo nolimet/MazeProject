@@ -13,7 +13,7 @@ public class StatusEffect : MonoBehaviour
         Regeneration,
         StaminaRegen,
         ManaRegen,
-        Binden,
+        Bindend,
         Blinded,
         Slowness,
         Poisened
@@ -79,6 +79,10 @@ public class StatusEffect : MonoBehaviour
                 break;
             case effects.ManaRegen:
                 HSM.restoreMana(callculatedDMG);
+                break;
+            case effects.Bindend:
+                break;
+            case effects.Blinded:
                 break;
             default:
                 break;
