@@ -9,7 +9,7 @@ namespace managers
         SubMenu[] menus;
 
         [SerializeField]
-        GameObject play, pause;
+        GameObject play = null, pause = null;
 
         public static bool paused = false;
         public delegate void PauseAction();
@@ -84,8 +84,8 @@ namespace managers
         [System.Serializable]
         class SubMenu
         {
-            public string name;
-            public GameObject gameObject;
+            public string name = null;
+            public GameObject gameObject = null;
         }
     }
 }
