@@ -7,7 +7,6 @@ public class PlayerControler : MonoBehaviour
 
     const float gravity = 20f;
     const float Speed = 4.00f;
-    public static bool canMove;
     void Start()
     {
         control = GetComponent<CharacterController>();
@@ -20,11 +19,7 @@ public class PlayerControler : MonoBehaviour
 
     void playerMove()
     {
-        if (Input.GetButton(Axis.Cancel))
-            PlayerControler.canMove = false;
-        if (Input.GetMouseButton(1))
-            PlayerControler.canMove = true;
-        if (PlayerControler.canMove)
+        if (!managers.MenuManager.paused)
         {
             Vector3 move = new Vector3();
             if (control.isGrounded)

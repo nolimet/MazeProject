@@ -85,9 +85,9 @@ public class radialSpellMenu : MonoBehaviour
     }
     void Update()
     {
-        if(Input.GetButton(Axis.Cancel))
+        if(managers.MenuManager.paused)
             OpenMenu(0);
-        if(Input.GetMouseButton(1))
+        else
             OpenMenu(-1);
     }
 

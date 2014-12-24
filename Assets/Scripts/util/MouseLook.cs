@@ -31,22 +31,9 @@ public class MouseLook : MonoBehaviour
 
     float rotationY = 0F;
 
-    bool mouseDown;
-
     void Update()
     {
-        if (Input.GetButton(Axis.Cancel))
-        {
-            mouseDown = false;
-            Screen.lockCursor = false;
-        }
-        if(Input.GetMouseButtonDown(1))
-        {
-            mouseDown = true;
-            Screen.lockCursor=true;
-        }
-
-        if (mouseDown)
+        if (!managers.MenuManager.paused)
         {
             if (axes == RotationAxes.MouseXAndY)
             {
@@ -72,5 +59,15 @@ public class MouseLook : MonoBehaviour
         // Make the rigid body not change rotation
         if (rigidbody)
             rigidbody.freezeRotation = true;
+        managers.MenuManager.OnPause += MenuManager_OnPause;
+    }
+
+    void MenuManager_OnPause()
+    {
+        print("fired");
+        if (managers.MenuManager.paused)
+            Screen.lockCursor = false;
+        if (!managers.MenuManager.paused)
+            Screen.lockCursor = true;
     }
 }

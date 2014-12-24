@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using gameData;
+using managers;
 
 public class MagicSpells : MonoBehaviour {
 
