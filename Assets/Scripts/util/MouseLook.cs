@@ -64,10 +64,9 @@ public class MouseLook : MonoBehaviour
 
     void MenuManager_OnPause()
     {
-        print("fired");
         if (managers.MenuManager.paused)
             Screen.lockCursor = false;
-        if (!managers.MenuManager.paused)
+        else
             Screen.lockCursor = true;
     }
 }

@@ -45,6 +45,8 @@ public class radialSpellMenu : MonoBehaviour
         menus.Add(pm);
         pt.localPosition = Vector3.zero;
 
+        managers.MenuManager.OnPause += onPause;
+
         for (int i = 0; i < l; i++)
         {
             g = (GameObject)Instantiate(TemplateObject);
@@ -83,7 +85,7 @@ public class radialSpellMenu : MonoBehaviour
         }
        
     }
-    void Update()
+    void onPause()
     {
         if(managers.MenuManager.paused)
             OpenMenu(0);
@@ -141,6 +143,7 @@ public class radialSpellMenu : MonoBehaviour
                 button.onClick.AddListener(delegate
                 {
                     radialSpellMenu.instance.OpenMenu(spellNumb + 1);
+                    Debug.Log("test");
                 });
             }
             else

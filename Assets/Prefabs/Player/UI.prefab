@@ -325,21 +325,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &100038
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 224: {fileID: 22400036}
-  m_Layer: 5
-  m_Name: Selector
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
 --- !u!1 &100040
 GameObject:
   m_ObjectHideFlags: 0
@@ -1009,10 +994,9 @@ MonoBehaviour:
   - name: StartMenu
     gameObject: {fileID: 100036}
   - name: spells
-    gameObject: {fileID: 100038}
+    gameObject: {fileID: 100016}
   play: {fileID: 100022}
   pause: {fileID: 100040}
-  paused: 0
 --- !u!222 &22200000
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -1272,12 +1256,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 22400020}
-  m_Father: {fileID: 22400036}
-  m_RootOrder: 0
+  m_Father: {fileID: 22400038}
+  m_RootOrder: 1
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: -51.267334}
+  m_SizeDelta: {x: -1500, y: -684.968262}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22400018
 RectTransform:
@@ -1439,24 +1423,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 5.7220459e-06}
   m_SizeDelta: {x: 387, y: 529}
   m_Pivot: {x: .5, y: .5}
---- !u!224 &22400036
-RectTransform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100038}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 22400016}
-  m_Father: {fileID: 22400038}
-  m_RootOrder: 1
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: .5, y: .5}
 --- !u!224 &22400038
 RectTransform:
   m_ObjectHideFlags: 1
@@ -1468,7 +1434,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 22400034}
-  - {fileID: 22400036}
+  - {fileID: 22400016}
   m_Father: {fileID: 22400002}
   m_RootOrder: 1
   m_AnchorMin: {x: 0, y: 0}

@@ -46,6 +46,7 @@ namespace managers
 
         public void Play()
         {
+            print("playing");
             play.SetActive(true);
             pause.SetActive(false);
             MenuManager.paused = false;
@@ -54,6 +55,7 @@ namespace managers
 
         public void Pause()
         {
+            print("pause");
             play.SetActive(false);
             pause.SetActive(true);
             MenuManager.paused = true;
@@ -63,6 +65,7 @@ namespace managers
 
         void FireEvents()
         {
+            print("paused :" + MenuManager.paused);
             if (OnPause != null)
                 OnPause();
         }
