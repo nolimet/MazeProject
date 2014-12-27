@@ -1,0 +1,41 @@
+You can save from the pause menu
+You can load from the pause menu and main menu
+
+loadSave file(Xml, Json, Other)
+	Proccess file(C#magic)
+	
+	needed Data
+	Playerpos
+	Enemy's pos
+	Enemies health, stats
+	Players health and status
+	Unlocked spells and thinks alike
+	moveable object status
+	
+	enemy tweaks needed
+		add bool is dead
+		set health and mana and others
+		refrence ID
+		
+	Moveables tweakes needed
+		add bool activated
+		refrence ID
+		
+	pickups
+		pickedup
+		locationseter 
+		refrence ID
+		Item Type setter
+		
+	Player invetory contense
+		StackSize
+		Item Duration
+		Item Type
+		Item Position
+		
+	Player Equipment
+		Item Equiped
+		Slot item Equiped in
+		Items Durability
+		
+		
