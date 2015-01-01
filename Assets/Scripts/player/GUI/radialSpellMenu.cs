@@ -45,7 +45,7 @@ public class radialSpellMenu : MonoBehaviour
         menus.Add(pm);
         pt.localPosition = Vector3.zero;
 
-        managers.MenuManager.OnPause += onPause;
+        managers.EventManager.Pause += onPause;
 
         for (int i = 0; i < l; i++)
         {

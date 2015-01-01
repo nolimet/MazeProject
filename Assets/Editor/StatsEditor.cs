@@ -10,11 +10,12 @@ public class StatsEditor : Editor {
         base.OnInspectorGUI();
 
         Stats obj = (Stats)target;
-        obj.hpScaling = makeSlider(obj.hpScaling,"HP Scaling: " ,1f, 2f);
+        //obj.hpScaling = makeSlider(obj.hpScaling,"HP Scaling: " ,1f, 2f);
        // obj.maxHealth = EditorGUILayout.FloatField("Max Health", obj.maxHealth);
         //obj.health = obj.maxHealth;
         EditorGUILayout.LabelField("Current Health: " + obj.health);
-        GUILayout.Label("HP on lvl 10 : " + (Mathf.Round(obj.maxHealth * Mathf.Pow(obj.hpScaling,9))));
+        GUILayout.Label("HP on current Level : " + (Mathf.Round(obj.maxHealth * Mathf.Pow(obj.hpScaling, obj.level))));
+        GUILayout.Label("HP on level 10 : " + (Mathf.Round(obj.maxHealth * Mathf.Pow(obj.hpScaling, 9))));
 
         EditorGUILayout.Space();
 

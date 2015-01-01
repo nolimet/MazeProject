@@ -53,14 +53,15 @@ namespace gameData
         }
         #endregion
 
-        public float health = 10, maxHealth, armor = 20, level = 0, hpScaling = 1.2f;
+        public float health = 10, maxHealth, armor = 20, level = 0;
+        [Range(1f,2f)]
+        public float hpScaling = 1.2f;
         public microData resistances = new microData();
         public microData weaknesses = new microData();
 
         void Start()
         {
             maxHealth = Mathf.Round(maxHealth * Mathf.Pow(hpScaling,level));
-            print(Mathf.Pow(hpScaling, level - 1));
             health = maxHealth;
         }
 

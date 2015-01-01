@@ -59,7 +59,7 @@ public class MouseLook : MonoBehaviour
         // Make the rigid body not change rotation
         if (rigidbody)
             rigidbody.freezeRotation = true;
-        managers.MenuManager.OnPause += MenuManager_OnPause;
+        managers.EventManager.Pause += MenuManager_OnPause;
     }
 
     void MenuManager_OnPause()

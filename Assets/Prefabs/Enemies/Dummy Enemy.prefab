@@ -274,11 +274,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e95a7f2732a6544bb8738a5983178bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 2000
-  maxHealth: 2000
+  health: 10
+  maxHealth: 10
   armor: 0
-  level: 40
-  hpScaling: 1.20000005
+  level: 10
+  hpScaling: 1.10000002
   resistances:
     weak: 0
     mid: 0

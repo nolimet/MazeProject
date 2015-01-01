@@ -12,8 +12,7 @@ namespace managers
         GameObject play = null, pause = null;
 
         public static bool paused = false;
-        public delegate void PauseAction();
-        public static event PauseAction OnPause;
+        
 
 
         void Start()
@@ -65,9 +64,7 @@ namespace managers
 
         void FireEvents()
         {
-            print("paused :" + MenuManager.paused);
-            if (OnPause != null)
-                OnPause();
+                EventManager.FirePause();
         }
 
         public void OpenMenu(int id)
