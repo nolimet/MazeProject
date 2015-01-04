@@ -17,7 +17,8 @@ public class MagicSpells : MonoBehaviour {
         heal = 0,
         staminaBoost = 1,
         manaBoost = 2,
-        regeneration = 3
+        regeneration = 3,
+        magicLight = 4
     }
 
     public static void CastAoE(AoESpells spell)
@@ -79,6 +80,10 @@ public class MagicSpells : MonoBehaviour {
                     StatusEffect.EffectStarter(new StatusEffect.StatusData(StatusEffect.effects.Regeneration, HSMManager.instance.gameObject, 50f), 2f);
                     sp = (GameObject)Instantiate(Resources.Load(spellPath + type + "Heal"));
                 }
+                break;
+            case SelfSpells.magicLight:
+                if (HSM.CastSpell(5))
+                    managers.EventManager.CastedSpell(SelfSpells.magicLight);
                 break;
         }
         if (sp != null)

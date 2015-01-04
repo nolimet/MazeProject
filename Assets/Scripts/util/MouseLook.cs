@@ -60,6 +60,8 @@ public class MouseLook : MonoBehaviour
         if (rigidbody)
             rigidbody.freezeRotation = true;
         managers.EventManager.Pause += MenuManager_OnPause;
+
+        Screen.lockCursor = true;
     }
 
     void MenuManager_OnPause()

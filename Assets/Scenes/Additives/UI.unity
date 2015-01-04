@@ -344,6 +344,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 11400020, guid: 47addb8ce60650e46bd2f740da56c197, type: 2}
+      propertyPath: Magics.Array.data[0].Spells.Array.size
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 22400002, guid: 47addb8ce60650e46bd2f740da56c197, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -415,6 +419,10 @@ Prefab:
     - target: {fileID: 22400002, guid: 47addb8ce60650e46bd2f740da56c197, type: 2}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400020, guid: 47addb8ce60650e46bd2f740da56c197, type: 2}
+      propertyPath: Magics.Array.data[0].Spells.Array.data[4]
+      value: Magic Light
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 47addb8ce60650e46bd2f740da56c197, type: 2}
@@ -576,6 +584,7 @@ MonoBehaviour:
     - Stamina Boost
     - Mana Boost
     - Regeneration
+    - Magic Light
   - name: Target
     Spells:
     - Fireball

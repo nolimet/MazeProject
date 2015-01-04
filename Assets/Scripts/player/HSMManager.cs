@@ -14,7 +14,7 @@ public class HSMManager : MonoBehaviour
 
 
     public static HSMManager instance = null;
-
+    public static bool castingContinuesSpell = false;
    // util.DropdownMenu.outputData selfSpellData = new util.DropdownMenu.outputData();
    // util.DropdownMenu.outputData targetSpellData = new util.DropdownMenu.outputData();
     int selfSpell, targetSpell;
@@ -57,7 +57,7 @@ public class HSMManager : MonoBehaviour
     void magic()
     {
         //regen
-        if (HSM.Mana < HSM.maxMana)
+        if (HSM.Mana < HSM.maxMana && !HSMManager.castingContinuesSpell)
         {
             HSM.Mana += manaRegenrationRate * Time.deltaTime;
             if (HSM.Mana > HSM.maxMana)

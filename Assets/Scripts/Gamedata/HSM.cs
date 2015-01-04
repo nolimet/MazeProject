@@ -13,7 +13,7 @@ namespace gameData
         public static float Health = 100, Stamina = 100 , Mana = 100;
         public static Transform Player,Camera;
 
-        public static bool CastSpell(int cost)
+        public static bool CastSpell(float cost)
         {
             if (Mana >= cost)
             {
