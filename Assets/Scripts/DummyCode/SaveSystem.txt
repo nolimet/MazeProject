@@ -1,6 +1,9 @@
 You can save from the pause menu
 You can load from the pause menu and main menu
 
+json saveFile
+http://pyromancers.com/json-to-c-sharp-converter/
+
 loadSave file(Xml, Json, Other)
 	Proccess file(C#magic)
 	
