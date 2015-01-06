@@ -15,7 +15,7 @@ public class radialSpellMenu : MonoBehaviour
     [SerializeField]
     RectTransform canvas;
     [SerializeField]
-    float radius = 200f, angleOffSet = 0f;
+    float radius = 400f, angleOffSet = 0f;
 
     public static radialSpellMenu instance;
     void Start()
