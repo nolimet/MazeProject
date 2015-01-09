@@ -93,9 +93,44 @@ namespace managers
             }
         }
 
-        public static void ExcuteEffectMonster(StatusData data)
+        public static void ExcuteEffectMonster(StatusData data, float duration)
         {
+            float callculatedDMG = data.totalDmg / duration / DMGTPS;
+            switch (data.status)
+            {
+                case effects.Burning:
+                    data.target.SendMessage("TakeDMG", new Stats.dmgData(callculatedDMG, new Stats.DMGTypes[] { Stats.DMGTypes.Fire }), SendMessageOptions.DontRequireReceiver);
+                    break;
 
+                case effects.Bleeding:
+                    data.target.SendMessage("TakeDMG", new Stats.dmgData(callculatedDMG, new Stats.DMGTypes[] { Stats.DMGTypes.Slash, Stats.DMGTypes.Impact }), SendMessageOptions.DontRequireReceiver);
+                    break;
+
+                case effects.Poisened:
+                    data.target.SendMessage("TakeDMG", new Stats.dmgData(callculatedDMG, new Stats.DMGTypes[] { Stats.DMGTypes.Poison }), SendMessageOptions.DontRequireReceiver);
+                    break;
+
+                case effects.Slowness:
+                    data.target.SendMessage("TakeDMG", new Stats.dmgData(callculatedDMG, new Stats.DMGTypes[] { Stats.DMGTypes.Ice }), SendMessageOptions.DontRequireReceiver);
+                    break;
+                case effects.Regeneration:
+                    data.target.SendMessage("Heal", callculatedDMG, SendMessageOptions.DontRequireReceiver);
+                    break;
+                case effects.StaminaRegen:
+                   // HSM.restoreStamina(callculatedDMG);
+                    Debug.Log("monsters do not have stamina");
+                    break;
+                case effects.ManaRegen:
+                    //HSM.restoreMana(callculatedDMG);
+                    Debug.Log("monsters do not have mana");
+                    break;
+                case effects.Bindend:
+                    break;
+                case effects.Blinded:
+                    break;
+                default:
+                    break;
+            }
         }
         public class StatusData
         {

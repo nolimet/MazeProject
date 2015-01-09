@@ -10,7 +10,7 @@ public class ChainLightnin : MonoBehaviour
     public float Damage;
     void Update()
     {
-        transform.Translate(Vector3.forward * Time.deltaTime * 20f);
+        transform.Translate(Vector3.forward * Time.deltaTime * 12f);
     }
 
     void OnCollisionEnter(Collision col)

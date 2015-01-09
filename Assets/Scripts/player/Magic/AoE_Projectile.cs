@@ -5,7 +5,8 @@ public class AoE_Projectile : MonoBehaviour
 {
     //example AoE
 
-    public gameData.Stats.DMGTypes[] damageTypes;
+   // public gameData.Stats.DMGTypes[] damageTypes;
+    public managers.StatusEffect.effects effectType = managers.StatusEffect.effects.Burning;
     public float Damage;
     public float radius;
 
@@ -39,7 +40,8 @@ public class AoE_Projectile : MonoBehaviour
 
                 if (Physics.Raycast(ray, out rayHit, radius * 2f))
                     if (rayHit.collider.tag == hit.collider.tag)
-                        hit.collider.transform.SendMessage("TakeDMG", new gameData.Stats.dmgData(Damage, damageTypes), SendMessageOptions.DontRequireReceiver);
+                        // hit.collider.transform.SendMessage("TakeDMG", new gameData.Stats.dmgData(Damage, damageTypes), SendMessageOptions.DontRequireReceiver);
+                        managers.StatusEffect.StartEffect(new managers.StatusEffect.StatusData(effectType, hit.collider.gameObject, Damage), 3f);
             }
         }
         particleSystem.emissionRate = 0;

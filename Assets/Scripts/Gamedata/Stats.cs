@@ -65,6 +65,16 @@ namespace gameData
             health = maxHealth;
         }
 
+        void Heal(float amount)
+        {
+            if (health < maxHealth)
+            {
+                health += amount;
+                if (health > maxHealth)
+                    health = maxHealth;
+            }
+        }
+
         void TakeDMG(dmgData data)
         {
             foreach (DMGTypes d in data.dmgTypes)
