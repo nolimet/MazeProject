@@ -48,7 +48,7 @@ public class Init : MonoBehaviour {
 
     void Update()
     {
-        if (loopStarted && Input.GetKeyDown(KeyCode.Escape))
+        if (loopStarted && Input.GetKeyDown(KeyCode.Return))
         {
             loopStarted = false;
             StartCoroutine(init());

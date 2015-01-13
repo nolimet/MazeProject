@@ -11,5 +11,10 @@ namespace Mechanismes
         {
             Application.LoadLevel(LevelToOpen);    
         }
+
+        void OnTriggerEnter(Collider other)
+        {
+            Application.LoadLevel(LevelToOpen); 
+        }
     }
 }

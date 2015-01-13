@@ -35,7 +35,10 @@ namespace managers
         public static event CastSpellAction CastSpell;
         public static void CastedSpell(MagicSpells.SelfSpells SpellSelf)
         {
+            if (_enabledLoging)
+                print(SpellSelf.ToString() + " casted");
             CastSpell(SpellSelf);
+
         }
 
         private static bool _enabledLoging = false;

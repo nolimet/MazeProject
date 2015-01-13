@@ -290,7 +290,9 @@ MonoBehaviour:
   m_OcclusionAttenuation: 1
   m_MinZ: .00999999978
   m_SSAOShader: {fileID: 4800000, guid: 43ca18288c424f645aaa1e9e07f04c50, type: 3}
+  m_SSAOMaterial: {fileID: 0}
   m_RandomTexture: {fileID: 2800000, guid: a181ca8e3c62f3e4b8f183f6c586b032, type: 3}
+  m_Supported: 0
 --- !u!124 &12400000
 Behaviour:
   m_ObjectHideFlags: 1

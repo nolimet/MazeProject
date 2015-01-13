@@ -159,7 +159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ba8857b39e3e774caf31be03df1ca96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enableLoging: 0
+  enableLoging: 1
 --- !u!1 &161176252
 GameObject:
   m_ObjectHideFlags: 0
