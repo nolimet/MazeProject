@@ -41,6 +41,15 @@ namespace managers
 
         }
 
+        public delegate void InventoryOpened(gameData.InventorySystem.Inventory Player, gameData.InventorySystem.Inventory other = null);
+        public static event InventoryOpened openInventory;
+        public static void CallOpendInventory(gameData.InventorySystem.Inventory Player, gameData.InventorySystem.Inventory other = null)
+        {
+            if(_enabledLoging)
+                print("Opened an inventory of type " + Player.ContainerType + " and one of type " + other.ContainerType);
+            openInventory(Player, other);
+        }
+
         private static bool _enabledLoging = false;
         protected static bool EventManagerExists;
         public bool enableLoging = false;

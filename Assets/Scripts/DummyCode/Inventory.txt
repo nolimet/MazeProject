@@ -1,0 +1,20 @@
+List<item> contens
+
+class item
+{
+	public enum type;
+	public string name;
+	public float weight;
+}
+
+class weapon extends item
+{
+	public int dmg;
+	public dmgType[] enchant; 
+}
+
+class armor extends item
+{
+	public int armor;
+	public armorType;
+}
