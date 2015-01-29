@@ -23,7 +23,8 @@ namespace gameData.InventorySystem
         ItemRenderPartWeapon GenericWeapon;
         [SerializeField]
         ItemRenderPartKey GenericKey;
-
+        [SerializeField]
+        Color textcolour;
         List<ItemRenderPartGeneric> playerInv;
         List<ItemRenderPartGeneric> otherInv;
         
@@ -48,9 +49,14 @@ namespace gameData.InventorySystem
                 switch (i.type)
                 {
                     case Inventory.itemType.misc:
-
+                        ItemRenderPartGeneric gri = new ItemRenderPartGeneric();
+                        gri.MainObject = (GameObject)Instantiate(GenericItem.MainObject);
+                        gri.init(GenericItem);
                         break;
                     case Inventory.itemType.armor:
+                        ItemRenderPartArmor ari = new ItemRenderPartArmor();
+                        ari.MainObject = (GameObject)Instantiate(GenericArmor.MainObject);
+                        ari.init(GenericArmor);
                         break;
                     case Inventory.itemType.weapon:
                         break;
@@ -63,6 +69,15 @@ namespace gameData.InventorySystem
                 }
             }
         }
+
+        void itemSetGeneric( Inventory.item i, ItemRenderPartGeneric irg)
+        {
+            irg.itemName.text = i.name;
+            irg.Discription.text = i.Discription;
+            irg.Icon.sprite = i.icon;
+            irg.Weight.text = "Weight: " + i.weight.ToString()+"KG";
+        }
+
         #region ObjectParentClasses;
         [System.Serializable]
         public class ItemRenderPartGeneric
@@ -74,9 +89,26 @@ namespace gameData.InventorySystem
             public UnityEngine.UI.Text Weight;
             public UnityEngine.UI.Image Icon;
 
-            public ItemRenderPartGeneric()
+            public void init( ItemRenderPartGeneric parentObject)
             {
-                
+                objectRectTransform = MainObject.GetComponent<RectTransform>();
+                UnityEngine.UI.Text[] textList = MainObject.GetComponentsInChildren<UnityEngine.UI.Text>();
+                foreach (UnityEngine.UI.Text t in textList)
+                {
+                    compairObjectText(t, parentObject);
+                }
+
+                Icon = MainObject.GetComponentInChildren<UnityEngine.UI.Image>();
+            }
+
+            protected virtual void compairObjectText(UnityEngine.UI.Text t, ItemRenderPartGeneric parentObject)
+            {
+                if (t.name == parentObject.itemName.name)
+                    itemName = t;
+                else if (t.name == parentObject.itemName.name)
+                    Discription = t;
+                else if (parentObject.Weight.name == parentObject.itemName.name)
+                    Weight = t;
             }
         }
 
@@ -94,6 +126,16 @@ namespace gameData.InventorySystem
             public UnityEngine.UI.Text Type;
             public UnityEngine.UI.Text ArmorLocation;
             //stats will be put in the discription
+            protected override void compairObjectText(UnityEngine.UI.Text t, ItemRenderPartArmor parentObject)
+            {
+                base.compairObjectText(t, (ItemRenderPartGeneric)parentObject);
+                if (t.name == parentObject.ArmorLocation.name)
+                    ArmorLocation = t;
+                else if (t.name == parentObject.Type.name)
+                    Type = t;
+                else if (t.name == parentObject.ArmorRating.name)
+                    ArmorRating = t;
+            }
 
         }
 
@@ -102,6 +144,15 @@ namespace gameData.InventorySystem
         {
             public UnityEngine.UI.Text Damage;
             public UnityEngine.UI.Text Enchants;
+
+            protected override void compairObjectText(UnityEngine.UI.Text t, ItemRenderPartWeapon parentObject)
+            {
+                base.compairObjectText(t, (ItemRenderPartGeneric)parentObject);
+                if (t.name == parentObject.Damage.name)
+                    Damage = t;
+                else if (t.name == parentObject.Enchants.name)
+                    Enchants = t;
+            }
         }
         #endregion
     }
