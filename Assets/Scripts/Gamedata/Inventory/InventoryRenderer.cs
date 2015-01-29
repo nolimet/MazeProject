@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 
 namespace gameData.InventorySystem
@@ -23,6 +24,8 @@ namespace gameData.InventorySystem
         [SerializeField]
         ItemRenderPartKey GenericKey;
 
+        List<ItemRenderPartGeneric> playerInv;
+        List<ItemRenderPartGeneric> otherInv;
         
 
         void Start()
@@ -61,14 +64,15 @@ namespace gameData.InventorySystem
             }
         }
         #region ObjectParentClasses;
+        [System.Serializable]
         public class ItemRenderPartGeneric
         {
-            GameObject MainObject;
-            RectTransform objectRectTransform;
-            UnityEngine.UI.Text itemName;
-            UnityEngine.UI.Text Discription;
-            UnityEngine.UI.Text Weight;
-            UnityEngine.UI.Image Icon;
+            public GameObject MainObject;
+            public RectTransform objectRectTransform;
+            public UnityEngine.UI.Text itemName;
+            public UnityEngine.UI.Text Discription;
+            public UnityEngine.UI.Text Weight;
+            public UnityEngine.UI.Image Icon;
 
             public ItemRenderPartGeneric()
             {
@@ -76,21 +80,28 @@ namespace gameData.InventorySystem
             }
         }
 
+        [System.Serializable]
         public class ItemRenderPartKey : ItemRenderPartGeneric
         {
-            UnityEngine.UI.Text WillOpen;
+            //public UnityEngine.UI.Text WillOpen;
+            //needs exstra function for what it will open
         }
 
+        [System.Serializable]
         public class ItemRenderPartArmor : ItemRenderPartGeneric
         {
-            UnityEngine.UI.Text Stats;
-            UnityEngine.UI.Text Type;
+            public UnityEngine.UI.Text ArmorRating;
+            public UnityEngine.UI.Text Type;
+            public UnityEngine.UI.Text ArmorLocation;
+            //stats will be put in the discription
+
         }
 
+        [System.Serializable]
         public class ItemRenderPartWeapon : ItemRenderPartGeneric
         {
-            UnityEngine.UI.Text Damage;
-            UnityEngine.UI.Text Enchants;
+            public UnityEngine.UI.Text Damage;
+            public UnityEngine.UI.Text Enchants;
         }
         #endregion
     }
