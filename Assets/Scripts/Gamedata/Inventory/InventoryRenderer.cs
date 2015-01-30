@@ -52,11 +52,13 @@ namespace gameData.InventorySystem
                         ItemRenderPartGeneric gri = new ItemRenderPartGeneric();
                         gri.MainObject = (GameObject)Instantiate(GenericItem.MainObject);
                         gri.init(GenericItem);
+                        itemSetGeneric(i, gri);
                         break;
                     case Inventory.itemType.armor:
                         ItemRenderPartArmor ari = new ItemRenderPartArmor();
                         ari.MainObject = (GameObject)Instantiate(GenericArmor.MainObject);
                         ari.init(GenericArmor);
+                        itemSetGeneric(i, ari);
                         break;
                     case Inventory.itemType.weapon:
                         break;
@@ -101,7 +103,7 @@ namespace gameData.InventorySystem
                 Icon = MainObject.GetComponentInChildren<UnityEngine.UI.Image>();
             }
 
-            protected virtual void compairObjectText(UnityEngine.UI.Text t, ItemRenderPartGeneric parentObject)
+            private void compairObjectText(UnityEngine.UI.Text t, ItemRenderPartGeneric parentObject)
             {
                 if (t.name == parentObject.itemName.name)
                     itemName = t;
@@ -126,10 +128,16 @@ namespace gameData.InventorySystem
             public UnityEngine.UI.Text Type;
             public UnityEngine.UI.Text ArmorLocation;
             //stats will be put in the discription
-            protected override void compairObjectText(UnityEngine.UI.Text t, ItemRenderPartArmor parentObject)
+            private void compairObjectText(UnityEngine.UI.Text t, ItemRenderPartArmor parentObject)
             {
-                base.compairObjectText(t, (ItemRenderPartGeneric)parentObject);
-                if (t.name == parentObject.ArmorLocation.name)
+                //base.compairObjectText(t, (ItemRenderPartGeneric)parentObject);
+                if (t.name == parentObject.itemName.name)
+                    itemName = t;
+                else if (t.name == parentObject.itemName.name)
+                    Discription = t;
+                else if (parentObject.Weight.name == parentObject.itemName.name)
+                    Weight = t;
+                else if (t.name == parentObject.ArmorLocation.name)
                     ArmorLocation = t;
                 else if (t.name == parentObject.Type.name)
                     Type = t;
@@ -145,10 +153,16 @@ namespace gameData.InventorySystem
             public UnityEngine.UI.Text Damage;
             public UnityEngine.UI.Text Enchants;
 
-            protected override void compairObjectText(UnityEngine.UI.Text t, ItemRenderPartWeapon parentObject)
+            private void compairObjectText(UnityEngine.UI.Text t, ItemRenderPartWeapon parentObject)
             {
-                base.compairObjectText(t, (ItemRenderPartGeneric)parentObject);
-                if (t.name == parentObject.Damage.name)
+                //base.compairObjectText(t, (ItemRenderPartGeneric)parentObject);
+                if (t.name == parentObject.itemName.name)
+                    itemName = t;
+                else if (t.name == parentObject.itemName.name)
+                    Discription = t;
+                else if (parentObject.Weight.name == parentObject.itemName.name)
+                    Weight = t;
+                else if (t.name == parentObject.Damage.name)
                     Damage = t;
                 else if (t.name == parentObject.Enchants.name)
                     Enchants = t;
