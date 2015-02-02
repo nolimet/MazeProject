@@ -4,10 +4,12 @@ using System.Collections.Generic;
 
 namespace gameData.InventorySystem
 {
-    public class Inventory : MonoBehaviour
+	[System.Serializable]
+    public class Inventory
     {
         public List<item> contents;
         public InvType ContainerType;
+
         #region enums
         public enum itemType
         {
@@ -49,11 +51,12 @@ namespace gameData.InventorySystem
         }
         #endregion
 
+		#region Item MainClasses
         [System.Serializable]
         public class item
         {
+			public string name = "";
             public itemType type = itemType.misc;
-            public string name = "";
             public float weight = 0;
             public string Discription = "";
             public Sprite icon;
@@ -62,17 +65,17 @@ namespace gameData.InventorySystem
         [System.Serializable]
         public class weapon : item
         {
-            public int dmg;
-            public gameData.Stats.DMGTypes[] enchant;
+            public int dmg = 0;
+            public gameData.Stats.DMGTypes[] enchant = new Stats.DMGTypes[1];
         }
 
         [System.Serializable]
         public class equip : item
         {
-            public int armor;
-            public gameData.Stats.DMGTypes armorType;
-            public ArmorPart part;
-            public armorStat stats;
+            public int armor = 0;
+            public gameData.Stats.DMGTypes armorType = Stats.DMGTypes.Arcane;
+            public ArmorPart part = ArmorPart.Ring;
+			public armorStat stats = new armorStat();
         }
 
         public class key : item
@@ -84,5 +87,6 @@ namespace gameData.InventorySystem
         {
             public int Str, Int, Agl, Sta;
         }
+		#endregion
     }
 }
