@@ -11,7 +11,7 @@ namespace managers
         public static void FirePause()
         {
             if (_enabledLoging)
-                print("Paused game");
+                CustomDebug.Log("Paused game", CustomDebug.Level.Trace);
 
             if (Pause != null)
                 Pause();
@@ -36,7 +36,7 @@ namespace managers
         public static void CastedSpell(MagicSpells.SelfSpells SpellSelf)
         {
             if (_enabledLoging)
-                print(SpellSelf.ToString() + " casted");
+                CustomDebug.Log(SpellSelf.ToString() + " casted");
             CastSpell(SpellSelf);
 
         }
@@ -46,13 +46,25 @@ namespace managers
         public static void CallOpendInventory(gameData.InventorySystem.Inventory Player, gameData.InventorySystem.Inventory other = null)
         {
             if(_enabledLoging)
-                print("Opened an inventory of type " + Player.ContainerType + " and one of type " + other.ContainerType);
+                CustomDebug.Log("Opened an inventory of type " + Player.ContainerType + " and one of type " + other.ContainerType);
             openInventory(Player, other);
         }
 
+        public delegate void InventoryDoneLoading();
+        public static event InventoryDoneLoading _InventoryDoneloading;
+        public static void OnInventoryDoneLoading()
+        {
+            if (_enabledLoging)
+                CustomDebug.Log("Inventory done loading");
+        }
+
+        //In Mamanger var's. Have nothing todo with the eventmanager it self. Just for logging
         private static bool _enabledLoging = false;
         protected static bool EventManagerExists;
         public bool enableLoging = false;
+        public CustomDebug.Level logLevel;
+
+        //Init for manager;
         void Start()
         {
             _enabledLoging = enableLoging;
@@ -60,6 +72,13 @@ namespace managers
                 Debug.LogError("there are two EventManagers");
             else
                 EventManagerExists = true;
+
+            CustomDebug.LogLevel = logLevel;
         }
+
+        
     }
+
+    
 }
+

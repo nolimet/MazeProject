@@ -44,53 +44,58 @@ public class CustomDebug : MonoBehaviour {
 
     public enum Users{
         Jesse,
-        Kit,
         System //system will always show
     };
 
-    public static void Log(string Message, Users user = Users.System, Level level = Level.Info)
+    public static void Log(object Message,  Level level = Level.Info, Users user = Users.System)
     {
         string output;
-
         if (user == Users.System)
             output = "[System]";
         else
             output = "";
 
-        if ((int)LogLevel < (int)level || user != currentUser && user != Users.System)
+        if ( level < LogLevel|| user != currentUser && user != Users.System)
+        {
             return;
-
+        }
         switch (level)
         {
             case Level.Trace:
-                output += "[Trace] ";
+                output += "<color=green>[Trace] ";
                 output += Message;
+                output += "</color>";
                 Debug.Log(output);
                 break;
 
             case Level.Info:
-                output += "[Info] ";
+                output += "<color=lightblue>[Info] ";
                 output += Message;
+                output += "</color>";
                 Debug.Log(output);
                 break;
 
             case Level.Debug:
-                output += "[Debug] ";
+                output += "<color=brown>[Debug] ";
                 output += Message;
+                output += "</color>";
                 Debug.Log(output);
                 break;
 
             case Level.Warn:
-                output += "[Warning] ";
+                output += "<color=orange>[Warning] ";
                 output += Message;
+                output += "</color>";
                 Debug.LogWarning(output);
                 break;
 
             case Level.Error:
-                output += "[Error] ";
+                output += "<color=red>[Error] ";
                 output += Message;
+                output += "</color>";
                 Debug.LogError(output);
                 break;
         }
+        
     }
 }

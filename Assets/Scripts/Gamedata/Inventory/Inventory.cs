@@ -59,7 +59,14 @@ namespace gameData.InventorySystem
             public itemType type = itemType.misc;
             public float weight = 0;
             public string Discription = "";
-            public Sprite icon;
+            public Sprite icon = new Sprite();
+            public item (string _name = "", itemType _type = itemType.misc, float _weight = 0, string _discription = "")
+            {
+                name = _name;
+                type = _type;
+                weight = _weight;
+                Discription = _discription;
+            }
         }
 
         [System.Serializable]
@@ -75,7 +82,14 @@ namespace gameData.InventorySystem
             public int armor = 0;
             public gameData.Stats.DMGTypes armorType = Stats.DMGTypes.Arcane;
             public ArmorPart part = ArmorPart.Ring;
-			public armorStat stats = new armorStat();
+            public armorStat stats = new armorStat();
+
+            public equip(string _name = "", itemType _type = itemType.armor, float _weight = 0, string _discription = "", int _armor= 0, gameData.Stats.DMGTypes _armortype = Stats.DMGTypes.Arcane, ArmorPart _part = ArmorPart.Amulet) : base (_name, _type, _weight, _discription)
+            {
+                armor = _armor;
+                armorType = _armortype;
+                part = _part;
+            }
         }
 
         public class key : item

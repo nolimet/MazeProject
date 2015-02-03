@@ -37,6 +37,9 @@ namespace gameData.InventorySystem
             GenericItem.MainObject.SetActive(false);
             GenericKey.MainObject.SetActive(false);
             GenericWeapon.MainObject.SetActive(false);
+
+            Inventory.equip e = new Inventory.equip("testingItem");
+            invA.contents.Add(e);
         }
 
         void EventManager__openInventory(Inventory Player, Inventory Other = null)
@@ -44,6 +47,7 @@ namespace gameData.InventorySystem
 			renderItems(Player,PlayerInvListParent);
             if (Other == null)
 				renderItems(Other,OtherInvListParent);
+            managers.EventManager.OnInventoryDoneLoading();
         }
 
 		public void openFake(bool both = false)
@@ -51,15 +55,17 @@ namespace gameData.InventorySystem
 			renderItems(invA,PlayerInvListParent);
 			if (both)
 				renderItems(invB,OtherInvListParent);
+
+            managers.EventManager.OnInventoryDoneLoading();
 		}
         #region invHandler
         void renderItems(Inventory toRender, RectTransform parent)
         {
-			Transform[] transforms = parent.GetComponentsInChildren<Transform>();
-			foreach(Transform t in transforms)
-			{
-				if(t!=parent.transform)
-					DestroyImmediate(t.gameObject);
+            int l = parent.childCount;
+			for (int i = 0; i<l;i++)
+            {
+				if(parent.GetChild(i)!=parent.gameObject)
+                    Destroy(parent.GetChild(i).gameObject, 0.1f);
 			}
             parent.sizeDelta = new Vector2(parent.sizeDelta.x, 800);
 			float heightIndex = parent.sizeDelta.y/2f;
@@ -154,7 +160,7 @@ namespace gameData.InventorySystem
 			public float setPos(float heightIndex){
 				//objectRectTransform.localPosition = new Vector3(0,heightIndex,0);
                 objectRectTransform.localScale = new Vector3(1, 1, 1);
-                print("<color=lightblue>" + heightIndex + ", " + objectRectTransform.sizeDelta.ToString() + "</color>");
+                CustomDebug.Log(heightIndex + ", " + objectRectTransform.sizeDelta.ToString(), CustomDebug.Level.Trace);
 				heightIndex -= objectRectTransform.sizeDelta.y + padding;
                 
 				return heightIndex;
