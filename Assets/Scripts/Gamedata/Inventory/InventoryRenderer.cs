@@ -7,10 +7,11 @@ namespace gameData.InventorySystem
 {
     public class InventoryRenderer : MonoBehaviour
     {
-		[SerializeField]
-        Inventory invA,invB; // testing Invs
-        //bool Bused;
+        const int padding = 5;
 
+		[SerializeField]
+        Inventory invA =null ,invB = null; // testing Invs
+        //bool Bused;
         [SerializeField]
         RectTransform PlayerInvListParent;
         [SerializeField]
@@ -84,6 +85,11 @@ namespace gameData.InventorySystem
 						heightIndex = wri.setPos(heightIndex);
                         break;
                     case Inventory.itemType.key:
+                        ItemRenderPartKey kri = new ItemRenderPartKey();
+                        kri.MainObject = (GameObject)Instantiate(GenericKey.MainObject);
+                        kri.init(GenericKey);
+                        itemSetGeneric(i, kri, parent);
+                        heightIndex = kri.setPos(heightIndex);
                         break;
                     default:
                         Debug.LogWarning("UnknownItem Type named: " + i.type + " Item name is " + i.name);
@@ -94,7 +100,7 @@ namespace gameData.InventorySystem
 
         void itemSetGeneric( Inventory.item i, ItemRenderPartGeneric irg, RectTransform parent)
         {
-			Debug.Log (i.name + ", " + i.Discription + ", " + i.type.ToString());
+			//Debug.Log (i.name + ", " + i.Discription + ", " + i.type.ToString());
             irg.itemName.text = i.name;
 			irg.Discription.text = i.Discription;
             irg.Icon.sprite = i.icon;
@@ -102,6 +108,12 @@ namespace gameData.InventorySystem
 			irg.MainObject.name = i.name;
 			irg.objectRectTransform.SetParent(parent);
 
+        }
+
+        void itemSetWeapon(Inventory.weapon i, ItemRenderPartWeapon wri)
+        {
+            wri.Damage.text = "Damage: " + i.dmg.ToString();
+            wri.Enchants.text = "Enchants: " + i.enchant.ToString();
         }
 
         #region ObjectParentClasses;
@@ -123,14 +135,21 @@ namespace gameData.InventorySystem
                 {
                     compairObjectText(t, parentObject);
                 }
-
-                Icon = MainObject.GetComponentInChildren<UnityEngine.UI.Image>();
+                UnityEngine.UI.Image[] imageList = MainObject.GetComponentsInChildren<UnityEngine.UI.Image>();
+                foreach (UnityEngine.UI.Image t in imageList)
+                {
+                    if (t.name == parentObject.Icon.name)
+                        Icon = t;
+                }
 
             }
 
 			public float setPos(float heightIndex){
 				objectRectTransform.localPosition = new Vector3(0,heightIndex,0);
-				heightIndex += objectRectTransform.sizeDelta.y;
+                objectRectTransform.localScale = new Vector3(1, 1, 1);
+                print("<color=lightblue>" + heightIndex + ", " + objectRectTransform.sizeDelta.ToString() + "</color>");
+				heightIndex -= objectRectTransform.sizeDelta.y - padding;
+                
 				return heightIndex;
 			}
 
@@ -150,6 +169,15 @@ namespace gameData.InventorySystem
         {
             //public UnityEngine.UI.Text WillOpen;
             //needs exstra function for what it will open
+            private void compairObjectText(UnityEngine.UI.Text t, ItemRenderPartGeneric parentObject)
+            {
+                if (t.name == parentObject.itemName.name)
+                    itemName = t;
+                else if (t.name == parentObject.Discription.name)
+                    Discription = t;
+                else if (parentObject.Weight.name == parentObject.Weight.name)
+                    Weight = t;
+            }
         }
 
         [System.Serializable]
