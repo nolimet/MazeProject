@@ -7,7 +7,7 @@ namespace gameData.InventorySystem
 {
     public class InventoryRenderer : MonoBehaviour
     {
-        const int padding = 5;
+        const int padding = 10;
 
 		[SerializeField]
         Inventory invA =null ,invB = null; // testing Invs
@@ -33,6 +33,10 @@ namespace gameData.InventorySystem
         void Start()
         {
             managers.EventManager.openInventory += EventManager__openInventory;
+            GenericArmor.MainObject.SetActive(false);
+            GenericItem.MainObject.SetActive(false);
+            GenericKey.MainObject.SetActive(false);
+            GenericWeapon.MainObject.SetActive(false);
         }
 
         void EventManager__openInventory(Inventory Player, Inventory Other = null)
@@ -48,7 +52,7 @@ namespace gameData.InventorySystem
 			if (both)
 				renderItems(invB,OtherInvListParent);
 		}
-
+        #region invHandler
         void renderItems(Inventory toRender, RectTransform parent)
         {
 			Transform[] transforms = parent.GetComponentsInChildren<Transform>();
@@ -58,7 +62,7 @@ namespace gameData.InventorySystem
 					DestroyImmediate(t.gameObject);
 			}
 
-			float heightIndex = 0;
+			float heightIndex = parent.sizeDelta.y/2f;
             foreach (Inventory.item i in toRender.contents)
             {
                 switch (i.type)
@@ -96,11 +100,13 @@ namespace gameData.InventorySystem
                         break;
                 }
             }
+            parent.sizeDelta = new Vector2(parent.sizeDelta.x,heightIndex*-1);
         }
 
         void itemSetGeneric( Inventory.item i, ItemRenderPartGeneric irg, RectTransform parent)
         {
 			//Debug.Log (i.name + ", " + i.Discription + ", " + i.type.ToString());
+            irg.MainObject.SetActive(true);
             irg.itemName.text = i.name;
 			irg.Discription.text = i.Discription;
             irg.Icon.sprite = i.icon;
@@ -115,7 +121,7 @@ namespace gameData.InventorySystem
             wri.Damage.text = "Damage: " + i.dmg.ToString();
             wri.Enchants.text = "Enchants: " + i.enchant.ToString();
         }
-
+        #endregion
         #region ObjectParentClasses;
         [System.Serializable]
         public class ItemRenderPartGeneric
@@ -148,7 +154,7 @@ namespace gameData.InventorySystem
 				objectRectTransform.localPosition = new Vector3(0,heightIndex,0);
                 objectRectTransform.localScale = new Vector3(1, 1, 1);
                 print("<color=lightblue>" + heightIndex + ", " + objectRectTransform.sizeDelta.ToString() + "</color>");
-				heightIndex -= objectRectTransform.sizeDelta.y - padding;
+				heightIndex -= objectRectTransform.sizeDelta.y + padding;
                 
 				return heightIndex;
 			}
