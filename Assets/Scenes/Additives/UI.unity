@@ -577,7 +577,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
@@ -1066,8 +1066,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 159.5, y: 4.00001001}
-  m_SizeDelta: {x: 318, y: -8}
+  m_AnchoredPosition: {x: 159, y: 0}
+  m_SizeDelta: {x: 318, y: -91}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &446304392
 MonoBehaviour:
@@ -1979,6 +1979,7 @@ GameObject:
   - 224: {fileID: 960384507}
   - 222: {fileID: 960384510}
   - 114: {fileID: 960384509}
+  - 114: {fileID: 960384508}
   m_Layer: 5
   m_Name: ContentPlayerInv
   m_TagString: Untagged
@@ -2004,6 +2005,26 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -3.05175781e-05}
   m_SizeDelta: {x: 308, y: 783}
   m_Pivot: {x: .5, y: .5}
+--- !u!114 &960384508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 960384506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1297475563, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 1
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
 --- !u!114 &960384509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2601,7 +2622,157 @@ MonoBehaviour:
       icon: {fileID: 21300000, guid: ab4757b9cbd4653419b04b4656d0d842, type: 3}
     ContainerType: 1
   invB:
-    contents: []
+    contents:
+    - name: Test 1
+      type: 0
+      weight: 0
+      Discription: a awesome text here that is complety useless
+      icon: {fileID: 21300000, guid: 980c16eb801c6c34e9fa8f143b166076, type: 3}
+    - name: Test 1
+      type: 0
+      weight: 0
+      Discription: a awesome text here that is complety useless
+      icon: {fileID: 21300000, guid: 980c16eb801c6c34e9fa8f143b166076, type: 3}
+    - name: Test 1
+      type: 0
+      weight: 0
+      Discription: a awesome text here that is complety useless
+      icon: {fileID: 21300000, guid: 980c16eb801c6c34e9fa8f143b166076, type: 3}
+    - name: Test 1
+      type: 0
+      weight: 0
+      Discription: a awesome text here that is complety useless
+      icon: {fileID: 21300000, guid: 980c16eb801c6c34e9fa8f143b166076, type: 3}
+    - name: Test 1
+      type: 0
+      weight: 0
+      Discription: a awesome text here that is complety useless
+      icon: {fileID: 21300000, guid: 980c16eb801c6c34e9fa8f143b166076, type: 3}
+    - name: Test 1
+      type: 0
+      weight: 0
+      Discription: a awesome text here that is complety useless
+      icon: {fileID: 21300000, guid: 980c16eb801c6c34e9fa8f143b166076, type: 3}
+    - name: Test 1
+      type: 0
+      weight: 0
+      Discription: a awesome text here that is complety useless
+      icon: {fileID: 21300000, guid: 980c16eb801c6c34e9fa8f143b166076, type: 3}
+    - name: Test 1
+      type: 0
+      weight: 0
+      Discription: a awesome text here that is complety useless
+      icon: {fileID: 21300000, guid: 980c16eb801c6c34e9fa8f143b166076, type: 3}
+    - name: Test 1
+      type: 0
+      weight: 0
+      Discription: a awesome text here that is complety useless
+      icon: {fileID: 21300000, guid: 980c16eb801c6c34e9fa8f143b166076, type: 3}
+    - name: Test 1
+      type: 0
+      weight: 0
+      Discription: a awesome text here that is complety useless
+      icon: {fileID: 21300000, guid: 980c16eb801c6c34e9fa8f143b166076, type: 3}
+    - name: Test 1
+      type: 0
+      weight: 0
+      Discription: a awesome text here that is complety useless
+      icon: {fileID: 21300000, guid: 980c16eb801c6c34e9fa8f143b166076, type: 3}
+    - name: Test 1
+      type: 0
+      weight: 0
+      Discription: a awesome text here that is complety useless
+      icon: {fileID: 21300000, guid: 980c16eb801c6c34e9fa8f143b166076, type: 3}
+    - name: Test 1
+      type: 0
+      weight: 0
+      Discription: a awesome text here that is complety useless
+      icon: {fileID: 21300000, guid: 980c16eb801c6c34e9fa8f143b166076, type: 3}
+    - name: Test 1
+      type: 0
+      weight: 0
+      Discription: a awesome text here that is complety useless
+      icon: {fileID: 21300000, guid: 980c16eb801c6c34e9fa8f143b166076, type: 3}
+    - name: Test 1
+      type: 0
+      weight: 0
+      Discription: a awesome text here that is complety useless
+      icon: {fileID: 21300000, guid: 980c16eb801c6c34e9fa8f143b166076, type: 3}
+    - name: Test 1
+      type: 0
+      weight: 0
+      Discription: a awesome text here that is complety useless
+      icon: {fileID: 21300000, guid: 980c16eb801c6c34e9fa8f143b166076, type: 3}
+    - name: Test 1
+      type: 0
+      weight: 0
+      Discription: a awesome text here that is complety useless
+      icon: {fileID: 21300000, guid: 980c16eb801c6c34e9fa8f143b166076, type: 3}
+    - name: Test 1
+      type: 0
+      weight: 0
+      Discription: a awesome text here that is complety useless
+      icon: {fileID: 21300000, guid: 980c16eb801c6c34e9fa8f143b166076, type: 3}
+    - name: Test 1
+      type: 0
+      weight: 0
+      Discription: a awesome text here that is complety useless
+      icon: {fileID: 21300000, guid: 980c16eb801c6c34e9fa8f143b166076, type: 3}
+    - name: Test 1
+      type: 0
+      weight: 0
+      Discription: a awesome text here that is complety useless
+      icon: {fileID: 21300000, guid: 980c16eb801c6c34e9fa8f143b166076, type: 3}
+    - name: Test 1
+      type: 0
+      weight: 0
+      Discription: a awesome text here that is complety useless
+      icon: {fileID: 21300000, guid: 980c16eb801c6c34e9fa8f143b166076, type: 3}
+    - name: Test 1
+      type: 0
+      weight: 0
+      Discription: a awesome text here that is complety useless
+      icon: {fileID: 21300000, guid: 980c16eb801c6c34e9fa8f143b166076, type: 3}
+    - name: Test 1
+      type: 0
+      weight: 0
+      Discription: a awesome text here that is complety useless
+      icon: {fileID: 21300000, guid: 980c16eb801c6c34e9fa8f143b166076, type: 3}
+    - name: Test 1
+      type: 0
+      weight: 0
+      Discription: a awesome text here that is complety useless
+      icon: {fileID: 21300000, guid: 980c16eb801c6c34e9fa8f143b166076, type: 3}
+    - name: Test 1
+      type: 0
+      weight: 0
+      Discription: a awesome text here that is complety useless
+      icon: {fileID: 21300000, guid: 980c16eb801c6c34e9fa8f143b166076, type: 3}
+    - name: Test 1
+      type: 0
+      weight: 0
+      Discription: a awesome text here that is complety useless
+      icon: {fileID: 21300000, guid: 980c16eb801c6c34e9fa8f143b166076, type: 3}
+    - name: Test 1
+      type: 0
+      weight: 0
+      Discription: a awesome text here that is complety useless
+      icon: {fileID: 21300000, guid: 980c16eb801c6c34e9fa8f143b166076, type: 3}
+    - name: Test 1
+      type: 0
+      weight: 0
+      Discription: a awesome text here that is complety useless
+      icon: {fileID: 21300000, guid: 980c16eb801c6c34e9fa8f143b166076, type: 3}
+    - name: Test 1
+      type: 0
+      weight: 0
+      Discription: a awesome text here that is complety useless
+      icon: {fileID: 21300000, guid: 980c16eb801c6c34e9fa8f143b166076, type: 3}
+    - name: Test 1
+      type: 0
+      weight: 0
+      Discription: a awesome text here that is complety useless
+      icon: {fileID: 21300000, guid: 980c16eb801c6c34e9fa8f143b166076, type: 3}
     ContainerType: 2
   PlayerInvListParent: {fileID: 960384507}
   OtherInvListParent: {fileID: 1712845207}
@@ -3003,7 +3174,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: .389705896, g: .389705896, b: .389705896, a: 1}
   m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
   m_PreserveAspect: 0
@@ -3662,6 +3833,81 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1619971039}
+--- !u!1 &1642074049
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 1642074050}
+  - 114: {fileID: 1642074053}
+  - 222: {fileID: 1642074052}
+  - 114: {fileID: 1642074051}
+  m_Layer: 5
+  m_Name: Mask
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1642074050
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1642074049}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1712845207}
+  m_Father: {fileID: 2010146057}
+  m_RootOrder: 1
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 159, y: -400}
+  m_SizeDelta: {x: 288, y: 800}
+  m_Pivot: {x: .5, y: .5}
+--- !u!114 &1642074051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1642074049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &1642074052
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1642074049}
+--- !u!114 &1642074053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1642074049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1200242548, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShowMaskGraphic: 1
 --- !u!1 &1654980080
 GameObject:
   m_ObjectHideFlags: 0
@@ -3892,26 +4138,33 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 2010146057}
-  m_RootOrder: 1
+  m_Father: {fileID: 1642074050}
+  m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -4.76837158e-06, y: 401.903992}
+  m_AnchoredPosition: {x: -4.76837158e-06, y: 0}
   m_SizeDelta: {x: 288, y: 800}
-  m_Pivot: {x: .5, y: .949999988}
+  m_Pivot: {x: .5, y: .5}
 --- !u!114 &1712845208
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400064, guid: 47addb8ce60650e46bd2f740da56c197,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1712845206}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -1200242548, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Script: {fileID: 1297475563, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ShowMaskGraphic: 0
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
 --- !u!114 &1712845209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4330,13 +4583,13 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2042926722}
-  - {fileID: 1712845207}
+  - {fileID: 1642074050}
   m_Father: {fileID: 1088815660}
   m_RootOrder: 1
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1420, y: 4.00000334}
-  m_SizeDelta: {x: 318, y: -8}
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: 630, y: 0}
+  m_SizeDelta: {x: 318, y: 800}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &2010146058
 MonoBehaviour:
@@ -4470,8 +4723,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -160.999908, y: 1.50001001}
-  m_SizeDelta: {x: 20, y: 600}
+  m_AnchoredPosition: {x: -154, y: -2.37359995e-06}
+  m_SizeDelta: {x: 20, y: 800}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &2042926723
 MonoBehaviour:
@@ -4533,7 +4786,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: .278431386, g: .278431386, b: .278431386, a: 1}
   m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
   m_PreserveAspect: 0

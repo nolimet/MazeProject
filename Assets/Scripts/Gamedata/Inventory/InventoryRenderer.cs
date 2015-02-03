@@ -61,7 +61,7 @@ namespace gameData.InventorySystem
 				if(t!=parent.transform)
 					DestroyImmediate(t.gameObject);
 			}
-
+            parent.sizeDelta = new Vector2(parent.sizeDelta.x, 800);
 			float heightIndex = parent.sizeDelta.y/2f;
             foreach (Inventory.item i in toRender.contents)
             {
@@ -100,7 +100,8 @@ namespace gameData.InventorySystem
                         break;
                 }
             }
-            parent.sizeDelta = new Vector2(parent.sizeDelta.x,heightIndex*-1);
+            parent.sizeDelta = new Vector2(parent.sizeDelta.x, (heightIndex * -1) + parent.sizeDelta.y);
+            //parent.GetComponent<VerticalLayoutGroup>().SetLayoutVertical();
         }
 
         void itemSetGeneric( Inventory.item i, ItemRenderPartGeneric irg, RectTransform parent)
@@ -151,7 +152,7 @@ namespace gameData.InventorySystem
             }
 
 			public float setPos(float heightIndex){
-				objectRectTransform.localPosition = new Vector3(0,heightIndex,0);
+				//objectRectTransform.localPosition = new Vector3(0,heightIndex,0);
                 objectRectTransform.localScale = new Vector3(1, 1, 1);
                 print("<color=lightblue>" + heightIndex + ", " + objectRectTransform.sizeDelta.ToString() + "</color>");
 				heightIndex -= objectRectTransform.sizeDelta.y + padding;
