@@ -13,7 +13,7 @@ namespace Mechanismes
             foreach (Light l in data.lights)
             {
                 l.intensity = 0;
-                l.gameObject.particleSystem.emissionRate = 0;
+                l.gameObject.GetComponent<ParticleSystem>().emissionRate = 0;
             }
         }
         protected override void UseObj()
@@ -30,7 +30,7 @@ namespace Mechanismes
             foreach (Light l in data.lights)
             {
                 i++;
-                l.gameObject.particleSystem.emissionRate = data.particleEmisionRate;
+                l.gameObject.GetComponent<ParticleSystem>().emissionRate = data.particleEmisionRate;
                 StartCoroutine(lightSingle(l));
                 if (i % data.lightAtSameTime == 0)
                     yield return new WaitForSeconds(data.delayBetweenlights);

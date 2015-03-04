@@ -12,8 +12,8 @@ public class move : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        rigidbody.AddForce(Vector3.back * Input.GetAxis("Horizontal") * 100f);
-        rigidbody.AddForce(Vector3.right * Input.GetAxis("Vertical") * 100f);
+        GetComponent<Rigidbody>().AddForce(Vector3.back * Input.GetAxis("Horizontal") * 100f);
+        GetComponent<Rigidbody>().AddForce(Vector3.right * Input.GetAxis("Vertical") * 100f);
 
         transform.rotation = Quaternion.Euler(new Vector3(-25f * Input.GetAxis("Horizontal"), 0, 0));
 	}

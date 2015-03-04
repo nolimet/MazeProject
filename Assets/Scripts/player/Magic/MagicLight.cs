@@ -7,8 +7,8 @@ public class MagicLight : MonoBehaviour {
     private float maxIntensity;
     void Start()
     {
-        light.enabled = false;
-        maxIntensity = light.intensity;
+        GetComponent<Light>().enabled = false;
+        maxIntensity = GetComponent<Light>().intensity;
         managers.EventManager.CastSpell +=EventManager_CastSpell;
 
     }
@@ -22,11 +22,11 @@ public class MagicLight : MonoBehaviour {
     IEnumerator casting()
     {
         HSMManager.castingContinuesSpell = true;
-        light.enabled = true;
+        GetComponent<Light>().enabled = true;
 
         for (int i = 0; i < 15;i++ )
         {
-            light.intensity = (maxIntensity / 15) * i;
+            GetComponent<Light>().intensity = (maxIntensity / 15) * i;
             yield return new WaitForEndOfFrame();
         }
             
@@ -37,11 +37,11 @@ public class MagicLight : MonoBehaviour {
 
         for (int i = 15; i > 0; i--)
         {
-            light.intensity = (maxIntensity / 15) * i;
+            GetComponent<Light>().intensity = (maxIntensity / 15) * i;
             yield return new WaitForEndOfFrame();
         }
 
-        light.enabled = false;
+        GetComponent<Light>().enabled = false;
         HSMManager.castingContinuesSpell = false;
     }
 }

@@ -92,7 +92,7 @@ public class MazeGenerator : MonoBehaviour {
 					ptype.transform.position = new Vector3(i * ptype.transform.localScale.x, 0, j * ptype.transform.localScale.y);
 					if (brick != null)
 					{
-						ptype.renderer.material = brick;
+						ptype.GetComponent<Renderer>().material = brick;
 					}
 					ptype.transform.parent = transform;
 				}

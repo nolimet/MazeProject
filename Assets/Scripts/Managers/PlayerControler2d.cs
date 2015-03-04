@@ -57,12 +57,12 @@ public class PlayerControler2d : MonoBehaviour
 
         if (Input.GetAxis(Axis.Horizontal) == 0 || Input.GetButton(Axis.Jump))
             if(isGrounded)
-                rigidbody2D.drag = 5;
+                GetComponent<Rigidbody2D>().drag = 5;
             else
-                rigidbody2D.drag = 0;
+                GetComponent<Rigidbody2D>().drag = 0;
         else
-                rigidbody2D.drag = 0;
+                GetComponent<Rigidbody2D>().drag = 0;
         //move.y -= gravity ;
-        rigidbody2D.AddForce(move*Time.deltaTime);
+        GetComponent<Rigidbody2D>().AddForce(move*Time.deltaTime);
     }
 }

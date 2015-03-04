@@ -34,20 +34,20 @@ public class AoE_Projectile : MonoBehaviour
         {
 
 
-            if (hit.collider.tag == gameData.tags.MOB || hit.collider.tag == gameData.tags.PLAYER)
+            if (hit.GetComponent<Collider>().tag == gameData.tags.MOB || hit.GetComponent<Collider>().tag == gameData.tags.PLAYER)
             {
                 ray = new Ray(transform.position, hit.transform.position - transform.position);
 
                 if (Physics.Raycast(ray, out rayHit, radius * 2f))
-                    if (rayHit.collider.tag == hit.collider.tag)
+                    if (rayHit.collider.tag == hit.GetComponent<Collider>().tag)
                         // hit.collider.transform.SendMessage("TakeDMG", new gameData.Stats.dmgData(Damage, damageTypes), SendMessageOptions.DontRequireReceiver);
-                        managers.StatusEffect.StartEffect(new managers.StatusEffect.StatusData(effectType, hit.collider.gameObject, Damage), 3f);
+                        managers.StatusEffect.StartEffect(new managers.StatusEffect.StatusData(effectType, hit.GetComponent<Collider>().gameObject, Damage), 3f);
             }
         }
-        particleSystem.emissionRate = 0;
-        particleSystem.startSpeed = 3;
-        particleSystem.Emit(400);
-        particleSystem.gravityModifier = 0.5f;
+        GetComponent<ParticleSystem>().emissionRate = 0;
+        GetComponent<ParticleSystem>().startSpeed = 3;
+        GetComponent<ParticleSystem>().Emit(400);
+        GetComponent<ParticleSystem>().gravityModifier = 0.5f;
         Destroy(gameObject, 2f);
         Destroy(this);
     }

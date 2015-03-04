@@ -30,7 +30,7 @@ public class ChainLightnin : MonoBehaviour
         float closest;
 
 
-        particleSystem.emissionRate = 0f;
+        GetComponent<ParticleSystem>().emissionRate = 0f;
         Destroy(gameObject, 1f);
         Destroy(this, 0.1f);
 
@@ -43,12 +43,12 @@ public class ChainLightnin : MonoBehaviour
 
             foreach (Collider hit in hits)
             {
-                if (hit.collider.tag == gameData.tags.MOB || hit.collider.tag == gameData.tags.PLAYER)
+                if (hit.GetComponent<Collider>().tag == gameData.tags.MOB || hit.GetComponent<Collider>().tag == gameData.tags.PLAYER)
                 {
                     ray = new Ray(transform.position, hit.transform.position - transform.position);
 
-                    if (Physics.Raycast(ray, out rayHit, Radius) && Vector3.Distance(hit.collider.transform.position, cObj.transform.position) < closest && !hasHit.Contains(hit.transform) && hit.collider.transform != transform)
-                        cTarget = hit.collider.transform;
+                    if (Physics.Raycast(ray, out rayHit, Radius) && Vector3.Distance(hit.GetComponent<Collider>().transform.position, cObj.transform.position) < closest && !hasHit.Contains(hit.transform) && hit.GetComponent<Collider>().transform != transform)
+                        cTarget = hit.GetComponent<Collider>().transform;
                 }
             }
             if (cTarget == null)

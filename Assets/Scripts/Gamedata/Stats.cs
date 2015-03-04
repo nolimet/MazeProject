@@ -99,7 +99,7 @@ namespace gameData
             health -= data.dmg;
             if (health <= 0)
             {
-                renderer.material.color += Color.red;
+                GetComponent<Renderer>().material.color += Color.red;
                 health = 0;
             }
             
