@@ -23,7 +23,7 @@ RenderSettings:
   m_AmbientSkyColor: {r: 0, g: 0, b: 0, a: 1}
   m_AmbientEquatorColor: {r: 0, g: 0, b: 0, a: 1}
   m_AmbientGroundColor: {r: 0, g: 0, b: 0, a: 1}
-  m_AmbientIntensity: 1
+  m_AmbientIntensity: 0
   m_AmbientMode: 3
   m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: .5
@@ -34,7 +34,7 @@ RenderSettings:
   m_DefaultReflectionMode: 0
   m_DefaultReflectionResolution: 128
   m_ReflectionBounces: 1
-  m_ReflectionIntensity: 1
+  m_ReflectionIntensity: .165000007
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
 --- !u!127 &3
@@ -12117,54 +12117,6 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 0cc318890068f894dbd947da7f14afb1, type: 2}
       propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 100002, guid: 0cc318890068f894dbd947da7f14afb1, type: 2}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 0cc318890068f894dbd947da7f14afb1, type: 2}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 10800000, guid: 0cc318890068f894dbd947da7f14afb1, type: 2}
-      propertyPath: m_CullingMask.m_Bits
-      value: 4294961151
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 0cc318890068f894dbd947da7f14afb1, type: 2}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 100002, guid: 0cc318890068f894dbd947da7f14afb1, type: 2}
-      propertyPath: m_Layer
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 2300000, guid: 0cc318890068f894dbd947da7f14afb1, type: 2}
-      propertyPath: m_LightmapIndex
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2300000, guid: 0cc318890068f894dbd947da7f14afb1, type: 2}
-      propertyPath: m_LightmapTilingOffset.x
-      value: .0615234375
-      objectReference: {fileID: 0}
-    - target: {fileID: 2300000, guid: 0cc318890068f894dbd947da7f14afb1, type: 2}
-      propertyPath: m_LightmapTilingOffset.y
-      value: .0615234375
-      objectReference: {fileID: 0}
-    - target: {fileID: 2300000, guid: 0cc318890068f894dbd947da7f14afb1, type: 2}
-      propertyPath: m_LightmapTilingOffset.z
-      value: .0622317195
-      objectReference: {fileID: 0}
-    - target: {fileID: 2300000, guid: 0cc318890068f894dbd947da7f14afb1, type: 2}
-      propertyPath: m_LightmapTilingOffset.w
-      value: .931480646
-      objectReference: {fileID: 0}
-    - target: {fileID: 10800000, guid: 0cc318890068f894dbd947da7f14afb1, type: 2}
-      propertyPath: m_ActuallyLightmapped
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 10800000, guid: 0cc318890068f894dbd947da7f14afb1, type: 2}
-      propertyPath: m_Shadows.m_Type
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
