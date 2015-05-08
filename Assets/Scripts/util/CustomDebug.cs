@@ -32,7 +32,7 @@ public class CustomDebug : MonoBehaviour {
 
     public static Level LogLevel = Level.Info;
 
-    public static Users currentUser = Users.System;
+    public static Profile currentUser = Profile.Jesse;
 
     public enum Level{
         Trace = 0,
@@ -42,20 +42,20 @@ public class CustomDebug : MonoBehaviour {
         Error = 4
     };
 
-    public enum Users{
+    public enum Profile{
         Jesse,
         System //system will always show
     };
 
-    public static void Log(object Message,  Level level = Level.Info, Users user = Users.System)
+    public static void Log(object Message,  Level level = Level.Info, Profile user = Profile.System)
     {
         string output;
-        if (user == Users.System)
+        if (user == Profile.System)
             output = "[System]";
         else
-            output = "";
-
-        if ( level < LogLevel|| user != currentUser && user != Users.System)
+            output = "[" + currentUser.ToString() + "]";
+        Debug.Log("Copearing " + (int)LogLevel + " Against " + (int)level);
+        if ( (int)level<=(int)LogLevel && (user == currentUser || user == Profile.System))
         {
             return;
         }
@@ -69,7 +69,7 @@ public class CustomDebug : MonoBehaviour {
                 break;
 
             case Level.Info:
-                output += "<color=lightblue>[Info] ";
+                output += "<color=blue>[Info] ";
                 output += Message;
                 output += "</color>";
                 Debug.Log(output);

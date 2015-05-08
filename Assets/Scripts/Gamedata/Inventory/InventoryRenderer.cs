@@ -118,6 +118,7 @@ namespace gameData.InventorySystem
 			irg.Discription.text = i.Discription;
             irg.Icon.sprite = i.icon;
             irg.Weight.text = "Weight: " + i.weight.ToString()+"KG";
+            CustomDebug.Log(irg.Weight.name + " Object Type: " + irg.MainObject.name , CustomDebug.Level.Info, CustomDebug.Profile.Jesse);
 			irg.MainObject.name = i.name;
 			irg.objectRectTransform.SetParent(parent);
 
@@ -204,18 +205,43 @@ namespace gameData.InventorySystem
             private void compairObjectText(UnityEngine.UI.Text t, ItemRenderPartArmor parentObject)
             {
                 //base.compairObjectText(t, (ItemRenderPartGeneric)parentObject);
-				if (t.name == parentObject.itemName.name)
+
+                switch (t.name)
+                {
+                    case "Name":
+                        itemName = t;
+                        break;
+                    case "Discription":
+                        Discription = t;
+                        break;
+                    case "Weight":
+                        Weight = t;
+                        break;
+                    case "ArmorLocation":
+                        ArmorLocation = t;
+                        break;
+                    case "ArmorTye":
+                        Type = t;
+                        break;
+                    case "ArmorRate":
+                        ArmorRating = t;
+                        break;
+                    default:
+                        CustomDebug.Log("Could not find location for item named " + t.name);
+                        break;
+                }
+			/*	if (t.name == parentObject.itemName.name)
 					itemName = t;
 				else if (t.name == parentObject.Discription.name)
 					Discription = t;
-				else if (parentObject.Weight.name == parentObject.Weight.name)
+				else if (t.name == parentObject.Weight.name)
 					Weight = t;
                 else if (t.name == parentObject.ArmorLocation.name)
                     ArmorLocation = t;
                 else if (t.name == parentObject.Type.name)
                     Type = t;
                 else if (t.name == parentObject.ArmorRating.name)
-                    ArmorRating = t;
+                    ArmorRating = t;*/
             }
 
         }
