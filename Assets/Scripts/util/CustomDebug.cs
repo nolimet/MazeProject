@@ -30,7 +30,7 @@ public class CustomDebug : MonoBehaviour {
      */
 
 
-    public static Level LogLevel = Level.Info;
+    public static Level LogLevel = Level.Trace;
 
     public static Profile currentUser = Profile.Jesse;
 
@@ -54,8 +54,8 @@ public class CustomDebug : MonoBehaviour {
             output = "[System]";
         else
             output = "[" + currentUser.ToString() + "]";
-        Debug.Log("Copearing " + (int)LogLevel + " Against " + (int)level);
-        if ( (int)level<=(int)LogLevel && (user == currentUser || user == Profile.System))
+
+        if (!((int)level >= (int)LogLevel && (user == currentUser | user == Profile.System))) 
         {
             return;
         }

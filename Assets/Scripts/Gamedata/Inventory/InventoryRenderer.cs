@@ -118,7 +118,6 @@ namespace gameData.InventorySystem
 			irg.Discription.text = i.Discription;
             irg.Icon.sprite = i.icon;
             irg.Weight.text = "Weight: " + i.weight.ToString()+"KG";
-            CustomDebug.Log(irg.Weight.name + " Object Type: " + irg.MainObject.name , CustomDebug.Level.Info, CustomDebug.Profile.Jesse);
 			irg.MainObject.name = i.name;
 			irg.objectRectTransform.SetParent(parent);
 
@@ -216,12 +215,15 @@ namespace gameData.InventorySystem
                         break;
                     case "Weight":
                         Weight = t;
+                        CustomDebug.Log(t.name + " Object Type: Weight", CustomDebug.Level.Debug, CustomDebug.Profile.Jesse);
                         break;
                     case "ArmorLocation":
                         ArmorLocation = t;
+                        CustomDebug.Log(t.name + " Object Type: ArmorLocation", CustomDebug.Level.Debug, CustomDebug.Profile.Jesse);
                         break;
                     case "ArmorTye":
                         Type = t;
+                        CustomDebug.Log(t.name + " Object Type: ArmorType", CustomDebug.Level.Debug, CustomDebug.Profile.Jesse);
                         break;
                     case "ArmorRate":
                         ArmorRating = t;
