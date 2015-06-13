@@ -11,5 +11,3 @@ EditorBuildSettings:
     path: Assets/Scenes/Additives/UI.unity
   - enabled: 1
     path: Assets/Scenes/Levels/TestLevels/TestLevel.unity
-  - enabled: 1
-    path: Assets/Scenes/Levels/TestLevels/player Test.unity
