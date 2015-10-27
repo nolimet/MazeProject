@@ -57,12 +57,12 @@ namespace Mechanismes
 
         void Callmove(Transform t, int dir = 0)
         {
-            t.Translate((Vector2)data.moveDist / data.totalSteps * dir);
+            t.Translate(((Vector2)data.moveDist / data.totalSteps * dir) * Time.deltaTime);
         }
 
         void CallmoveZ(Transform t, int dir = 0)
         {
-            t.Translate(new Vector3(0f, 0f, data.moveDist.z) / (data.totalSteps / 5f) * dir);
+            t.Translate((new Vector3(0f, 0f, data.moveDist.z) / (data.totalSteps / 5f) * dir)*Time.deltaTime);
         }
 
         void DoMove(bool inverted)
